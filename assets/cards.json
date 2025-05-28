@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c001",
+    "title": "Poop Attack",
+    "description": "Throw poop at your opponent.",
+    "rarity": "COMMON",
+    "image": "poop_attack.png",
+    "caption": "擲：臭臭彈"
+  },
+  {
+    "id": "c002",
+    "title": "Explosion",
+    "description": "Cause massive destruction.",
+    "rarity": "RARE",
+    "image": "explosion.png",
+    "caption": "炸裂全場"
+  }
+]
