@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+run {
+    jvmArgs '-Dfile.encoding=UTF-8'
+}
+
+group   = 'com.cyanide'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()        // 要有，才能抓 org.json
+}
+
+dependencies {
+    implementation 'org.json:json:20240303'   // ← 最新版
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+
+application {
+    mainClass = 'Main'    // 你的主程式類別（若有 Package 請填全名）
+}
+
+test {
+    useJUnitPlatform()
+}
