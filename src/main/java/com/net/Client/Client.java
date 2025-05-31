@@ -1,0 +1,44 @@
+package com.net.Client;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+import com.net.inviteCode;
+
+public class Client {
+    private static String HOST;
+    private static final int PORT = 8888;
+    private Socket socket;
+    private Scanner scanner;
+    private String name;
+
+    private PacketHandler handler;
+
+    Client(String host, int port){
+        try {
+            System.out.println(host);
+            this.socket = new Socket(host, port);
+            this.scanner = new Scanner(System.in);
+            
+            System.out.print("enter your name :");
+            this.name = this.scanner.nextLine();
+
+            handler = new PacketHandler(socket, name);
+            handler.start();
+
+
+        }catch(IOException e){
+            System.out.println("server connect error");
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter invite code :");
+        HOST = inviteCode.decodeInviteCode(scanner.nextLine());
+        new Client(HOST, PORT);
+    }
+
+}
