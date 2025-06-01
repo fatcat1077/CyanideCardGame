@@ -5,16 +5,24 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.net.inviteCode;
+import com.net.Room.*;
+import com.players.Player;
 
 public class Server {
+    //net
     private static int PORT = 8888;
-    private static String IP = "192.168.0.23"; 
-    private static List<ObjectOutputStream> clients = new ArrayList<ObjectOutputStream>();
+    private static String IP = "192.168.0.23";
     private ServerSocket serverSkt;
+    
+    //shared info
+    private static final List<ObjectOutputStream> clients = new CopyOnWriteArrayList<>();
+    private static final WaitRoom waitRoom = new WaitRoom();
+
+    //variable
     private int cntId = 1;
 
     
@@ -33,7 +41,7 @@ public class Server {
             try{
                 Socket clientSkt = serverSkt.accept();
                 System.out.println("clinet connected!!!");
-                new Thread(new PacketHandler(clientSkt, clients, cntId++)).start();
+                new Thread(new PacketHandler(clientSkt, clients, waitRoom, cntId++)).start();
 
             }catch(IOException e){
                 System.out.println("client connect error");

@@ -4,8 +4,10 @@ import java.io.*;
 import java.net.Socket;
 import java.util.List;
 
+import com.net.Room.WaitRoom;
 import com.net.Server.Controller.*;
 import com.net.protocol.packets.*;
+import com.players.Player;
 
 public class PacketHandler implements Runnable{
     //net
@@ -13,32 +15,33 @@ public class PacketHandler implements Runnable{
     private ObjectInputStream in;
     private ObjectOutputStream out;
     
-    // info
+    // shared info
     private List<ObjectOutputStream> clients;
+    private WaitRoom waitRoom;
+    
+    // individual info
+    private Player player;
     private int pid;
 
     //Controller
     private MessageController msgController;
+    private WaitRoomController waitRoomController;
 
 
 
 
-    PacketHandler(Socket clientSocket, List<ObjectOutputStream> clients, int playerId) throws IOException{
+    PacketHandler(Socket clientSocket, List<ObjectOutputStream> clients, WaitRoom waitRoom, int playerId) throws IOException{
         this.clientSkt = clientSocket;
         this.clients = clients;
+        this.waitRoom = waitRoom;
         this.out = new ObjectOutputStream(clientSocket.getOutputStream());
         this.in = new ObjectInputStream(clientSocket.getInputStream());
         this.msgController = new MessageController(out, clients);
+        this.waitRoomController = new WaitRoomController(clients);
         this.pid = playerId;
 
-        synchronized (clients) {
-            clients.add(out);
-        }
-
-        //init setup
-        this.out.writeObject(new Init(this.pid));
-        this.out.flush();
-
+        clients.add(out);
+        sendInitPacket();
     }
 
     @Override
@@ -47,8 +50,10 @@ public class PacketHandler implements Runnable{
             while (true) {
                 Object revObject = in.readObject();
                 
-                //identify which packet it is 
-                if(revObject instanceof Message){
+                //identify which packet it is
+                if(revObject instanceof Init){
+                    handleInitPacket(revObject);
+                }else if(revObject instanceof Message){
                     msgController.handle(revObject);
                 }
 
@@ -56,9 +61,8 @@ public class PacketHandler implements Runnable{
         } catch (Exception e) {
             System.out.println(String.format("Client (%d) disconnected: ", pid) + clientSkt);
         } finally {
-            synchronized (clients) {
                 clients.remove(out);
-            }
+                waitRoom.removePlayer(player);
             try {
                 clientSkt.close();
             } catch (IOException e) {
@@ -66,4 +70,26 @@ public class PacketHandler implements Runnable{
             }
         }
     }
+
+    private void sendInitPacket(){
+        try{
+            //init setup
+            this.out.writeObject(new Init(this.pid));
+            this.out.flush();
+        }catch(IOException e){
+            System.out.println("Sending Init Packet error");
+        }
+
+    }
+    private void handleInitPacket(Object obj){
+        Init info = (Init) obj;
+        this.player = new Player(info.getName());
+        this.player.setPID(pid);
+        this.waitRoom.addPlayer(player);
+        
+        //Update everyone's roomState
+        waitRoomController.updateToAll(this.waitRoom);
+
+    }
+
 }
