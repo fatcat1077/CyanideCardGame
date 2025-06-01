@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 
 import com.net.Client.Controller.*;
+import com.net.Room.WaitRoom;
 import com.net.protocol.packets.*;
 
 public class PacketHandler{
@@ -11,18 +12,22 @@ public class PacketHandler{
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    //info
+
+
+    //individual info
     private String name;
     private int pid;
 
     //controller
     private MessageController msgController;
+    private WaitRoomController waitRoomController;
 
     PacketHandler(Socket socket, String name) throws IOException{
         this.socket = socket;
         this.name = name;
         this.out = new ObjectOutputStream(this.socket.getOutputStream());
         this.in = new ObjectInputStream(this.socket.getInputStream());
+        this.waitRoomController = new WaitRoomController();
     }
 
     public void start(){
@@ -35,10 +40,13 @@ public class PacketHandler{
                     init(revObject);
                 }else if(revObject instanceof Message){
                     msgController.handle(revObject);
+                }else if(revObject instanceof WaitRoomState){
+                    waitRoomController.handle(revObject);
                 }
 
             }
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Disconnected from server.");
         } finally {
             try {
@@ -53,8 +61,13 @@ public class PacketHandler{
         Init init = (Init) obj;
         this.pid = init.getPID();
 
-        this.msgController = new MessageController(this.out, this.name, this.pid);
+        //return Init packet to server
+        init.setName(name);
+        out.writeObject(init);
+        out.flush();
+
         // open chat
+        this.msgController = new MessageController(this.out, this.name, this.pid);
         new Thread(this.msgController).start();
     }
 }

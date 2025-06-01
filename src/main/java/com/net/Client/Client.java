@@ -7,9 +7,11 @@ import java.util.*;
 import com.net.inviteCode;
 
 public class Client {
+    //net
     private static String HOST;
     private static final int PORT = 8888;
     private Socket socket;
+
     private Scanner scanner;
     private String name;
 
