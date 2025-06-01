@@ -27,7 +27,6 @@ public class PacketHandler{
         this.name = name;
         this.out = new ObjectOutputStream(this.socket.getOutputStream());
         this.in = new ObjectInputStream(this.socket.getInputStream());
-        this.waitRoomController = new WaitRoomController();
     }
 
     public void start(){
@@ -66,8 +65,11 @@ public class PacketHandler{
         out.writeObject(init);
         out.flush();
 
+        // open waitRoom
+        this.waitRoomController = new WaitRoomController(pid, out);
+
         // open chat
-        this.msgController = new MessageController(this.out, this.name, this.pid);
+        this.msgController = new MessageController(this.out, this.name, this.pid, this.waitRoomController);
         new Thread(this.msgController).start();
     }
 }

@@ -37,7 +37,7 @@ public class PacketHandler implements Runnable{
         this.out = new ObjectOutputStream(clientSocket.getOutputStream());
         this.in = new ObjectInputStream(clientSocket.getInputStream());
         this.msgController = new MessageController(out, clients);
-        this.waitRoomController = new WaitRoomController(clients);
+        this.waitRoomController = new WaitRoomController(this.clients, this.waitRoom);
         this.pid = playerId;
 
         clients.add(out);
@@ -55,6 +55,8 @@ public class PacketHandler implements Runnable{
                     handleInitPacket(revObject);
                 }else if(revObject instanceof Message){
                     msgController.handle(revObject);
+                }else if(revObject instanceof WaitRoomState){
+                    waitRoomController.handle(revObject);
                 }
 
             }
@@ -88,7 +90,8 @@ public class PacketHandler implements Runnable{
         this.waitRoom.addPlayer(player);
         
         //Update everyone's roomState
-        waitRoomController.updateToAll(this.waitRoom);
+        WaitRoomState roomStatePacket = new WaitRoomState(this.waitRoom);
+        waitRoomController.updateToAll(roomStatePacket);
 
     }
 

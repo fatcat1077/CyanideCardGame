@@ -33,8 +33,17 @@ public class WaitRoom implements Serializable{
     }
 
     public void setHost(Player newHost) {
-        if (players.contains(newHost)) {
+        boolean isExist = false;
+        for(Player player : players){
+            if(player.getPID() == newHost.getPID()){
+                isExist = true;
+                break;
+            }
+        }
+        if (isExist) {
             this.host = newHost;
+        }else{
+            System.out.println("WaitRoom doesn't have the player");
         }
     }
 
