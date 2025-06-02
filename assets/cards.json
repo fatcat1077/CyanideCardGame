@@ -1,18 +1,802 @@
 [
   {
     "id": "c001",
-    "title": "Poop Attack",
-    "description": "Throw poop at your opponent.",
+    "title": "Card 001",
+    "description": "Auto-generated description for card 1.",
     "rarity": "COMMON",
-    "image": "poop_attack.png",
-    "caption": "擲：臭臭彈"
+    "image": "card_001.png",
+    "caption": "自動產生卡片 1"
   },
   {
     "id": "c002",
-    "title": "Explosion",
-    "description": "Cause massive destruction.",
+    "title": "Card 002",
+    "description": "Auto-generated description for card 2.",
+    "rarity": "COMMON",
+    "image": "card_002.png",
+    "caption": "自動產生卡片 2"
+  },
+  {
+    "id": "c003",
+    "title": "Card 003",
+    "description": "Auto-generated description for card 3.",
+    "rarity": "COMMON",
+    "image": "card_003.png",
+    "caption": "自動產生卡片 3"
+  },
+  {
+    "id": "c004",
+    "title": "Card 004",
+    "description": "Auto-generated description for card 4.",
+    "rarity": "UNCOMMON",
+    "image": "card_004.png",
+    "caption": "自動產生卡片 4"
+  },
+  {
+    "id": "c005",
+    "title": "Card 005",
+    "description": "Auto-generated description for card 5.",
+    "rarity": "COMMON",
+    "image": "card_005.png",
+    "caption": "自動產生卡片 5"
+  },
+  {
+    "id": "c006",
+    "title": "Card 006",
+    "description": "Auto-generated description for card 6.",
+    "rarity": "UNCOMMON",
+    "image": "card_006.png",
+    "caption": "自動產生卡片 6"
+  },
+  {
+    "id": "c007",
+    "title": "Card 007",
+    "description": "Auto-generated description for card 7.",
+    "rarity": "COMMON",
+    "image": "card_007.png",
+    "caption": "自動產生卡片 7"
+  },
+  {
+    "id": "c008",
+    "title": "Card 008",
+    "description": "Auto-generated description for card 8.",
+    "rarity": "UNCOMMON",
+    "image": "card_008.png",
+    "caption": "自動產生卡片 8"
+  },
+  {
+    "id": "c009",
+    "title": "Card 009",
+    "description": "Auto-generated description for card 9.",
+    "rarity": "COMMON",
+    "image": "card_009.png",
+    "caption": "自動產生卡片 9"
+  },
+  {
+    "id": "c010",
+    "title": "Card 010",
+    "description": "Auto-generated description for card 10.",
     "rarity": "RARE",
-    "image": "explosion.png",
-    "caption": "炸裂全場"
+    "image": "card_010.png",
+    "caption": "自動產生卡片 10"
+  },
+  {
+    "id": "c011",
+    "title": "Card 011",
+    "description": "Auto-generated description for card 11.",
+    "rarity": "COMMON",
+    "image": "card_011.png",
+    "caption": "自動產生卡片 11"
+  },
+  {
+    "id": "c012",
+    "title": "Card 012",
+    "description": "Auto-generated description for card 12.",
+    "rarity": "UNCOMMON",
+    "image": "card_012.png",
+    "caption": "自動產生卡片 12"
+  },
+  {
+    "id": "c013",
+    "title": "Card 013",
+    "description": "Auto-generated description for card 13.",
+    "rarity": "COMMON",
+    "image": "card_013.png",
+    "caption": "自動產生卡片 13"
+  },
+  {
+    "id": "c014",
+    "title": "Card 014",
+    "description": "Auto-generated description for card 14.",
+    "rarity": "UNCOMMON",
+    "image": "card_014.png",
+    "caption": "自動產生卡片 14"
+  },
+  {
+    "id": "c015",
+    "title": "Card 015",
+    "description": "Auto-generated description for card 15.",
+    "rarity": "COMMON",
+    "image": "card_015.png",
+    "caption": "自動產生卡片 15"
+  },
+  {
+    "id": "c016",
+    "title": "Card 016",
+    "description": "Auto-generated description for card 16.",
+    "rarity": "UNCOMMON",
+    "image": "card_016.png",
+    "caption": "自動產生卡片 16"
+  },
+  {
+    "id": "c017",
+    "title": "Card 017",
+    "description": "Auto-generated description for card 17.",
+    "rarity": "COMMON",
+    "image": "card_017.png",
+    "caption": "自動產生卡片 17"
+  },
+  {
+    "id": "c018",
+    "title": "Card 018",
+    "description": "Auto-generated description for card 18.",
+    "rarity": "UNCOMMON",
+    "image": "card_018.png",
+    "caption": "自動產生卡片 18"
+  },
+  {
+    "id": "c019",
+    "title": "Card 019",
+    "description": "Auto-generated description for card 19.",
+    "rarity": "COMMON",
+    "image": "card_019.png",
+    "caption": "自動產生卡片 19"
+  },
+  {
+    "id": "c020",
+    "title": "Card 020",
+    "description": "Auto-generated description for card 20.",
+    "rarity": "RARE",
+    "image": "card_020.png",
+    "caption": "自動產生卡片 20"
+  },
+  {
+    "id": "c021",
+    "title": "Card 021",
+    "description": "Auto-generated description for card 21.",
+    "rarity": "COMMON",
+    "image": "card_021.png",
+    "caption": "自動產生卡片 21"
+  },
+  {
+    "id": "c022",
+    "title": "Card 022",
+    "description": "Auto-generated description for card 22.",
+    "rarity": "UNCOMMON",
+    "image": "card_022.png",
+    "caption": "自動產生卡片 22"
+  },
+  {
+    "id": "c023",
+    "title": "Card 023",
+    "description": "Auto-generated description for card 23.",
+    "rarity": "COMMON",
+    "image": "card_023.png",
+    "caption": "自動產生卡片 23"
+  },
+  {
+    "id": "c024",
+    "title": "Card 024",
+    "description": "Auto-generated description for card 24.",
+    "rarity": "UNCOMMON",
+    "image": "card_024.png",
+    "caption": "自動產生卡片 24"
+  },
+  {
+    "id": "c025",
+    "title": "Card 025",
+    "description": "Auto-generated description for card 25.",
+    "rarity": "LEGENDARY",
+    "image": "card_025.png",
+    "caption": "自動產生卡片 25"
+  },
+  {
+    "id": "c026",
+    "title": "Card 026",
+    "description": "Auto-generated description for card 26.",
+    "rarity": "COMMON",
+    "image": "card_026.png",
+    "caption": "自動產生卡片 26"
+  },
+  {
+    "id": "c027",
+    "title": "Card 027",
+    "description": "Auto-generated description for card 27.",
+    "rarity": "COMMON",
+    "image": "card_027.png",
+    "caption": "自動產生卡片 27"
+  },
+  {
+    "id": "c028",
+    "title": "Card 028",
+    "description": "Auto-generated description for card 28.",
+    "rarity": "UNCOMMON",
+    "image": "card_028.png",
+    "caption": "自動產生卡片 28"
+  },
+  {
+    "id": "c029",
+    "title": "Card 029",
+    "description": "Auto-generated description for card 29.",
+    "rarity": "COMMON",
+    "image": "card_029.png",
+    "caption": "自動產生卡片 29"
+  },
+  {
+    "id": "c030",
+    "title": "Card 030",
+    "description": "Auto-generated description for card 30.",
+    "rarity": "RARE",
+    "image": "card_030.png",
+    "caption": "自動產生卡片 30"
+  },
+  {
+    "id": "c031",
+    "title": "Card 031",
+    "description": "Auto-generated description for card 31.",
+    "rarity": "COMMON",
+    "image": "card_031.png",
+    "caption": "自動產生卡片 31"
+  },
+  {
+    "id": "c032",
+    "title": "Card 032",
+    "description": "Auto-generated description for card 32.",
+    "rarity": "UNCOMMON",
+    "image": "card_032.png",
+    "caption": "自動產生卡片 32"
+  },
+  {
+    "id": "c033",
+    "title": "Card 033",
+    "description": "Auto-generated description for card 33.",
+    "rarity": "COMMON",
+    "image": "card_033.png",
+    "caption": "自動產生卡片 33"
+  },
+  {
+    "id": "c034",
+    "title": "Card 034",
+    "description": "Auto-generated description for card 34.",
+    "rarity": "UNCOMMON",
+    "image": "card_034.png",
+    "caption": "自動產生卡片 34"
+  },
+  {
+    "id": "c035",
+    "title": "Card 035",
+    "description": "Auto-generated description for card 35.",
+    "rarity": "COMMON",
+    "image": "card_035.png",
+    "caption": "自動產生卡片 35"
+  },
+  {
+    "id": "c036",
+    "title": "Card 036",
+    "description": "Auto-generated description for card 36.",
+    "rarity": "UNCOMMON",
+    "image": "card_036.png",
+    "caption": "自動產生卡片 36"
+  },
+  {
+    "id": "c037",
+    "title": "Card 037",
+    "description": "Auto-generated description for card 37.",
+    "rarity": "COMMON",
+    "image": "card_037.png",
+    "caption": "自動產生卡片 37"
+  },
+  {
+    "id": "c038",
+    "title": "Card 038",
+    "description": "Auto-generated description for card 38.",
+    "rarity": "UNCOMMON",
+    "image": "card_038.png",
+    "caption": "自動產生卡片 38"
+  },
+  {
+    "id": "c039",
+    "title": "Card 039",
+    "description": "Auto-generated description for card 39.",
+    "rarity": "COMMON",
+    "image": "card_039.png",
+    "caption": "自動產生卡片 39"
+  },
+  {
+    "id": "c040",
+    "title": "Card 040",
+    "description": "Auto-generated description for card 40.",
+    "rarity": "RARE",
+    "image": "card_040.png",
+    "caption": "自動產生卡片 40"
+  },
+  {
+    "id": "c041",
+    "title": "Card 041",
+    "description": "Auto-generated description for card 41.",
+    "rarity": "COMMON",
+    "image": "card_041.png",
+    "caption": "自動產生卡片 41"
+  },
+  {
+    "id": "c042",
+    "title": "Card 042",
+    "description": "Auto-generated description for card 42.",
+    "rarity": "UNCOMMON",
+    "image": "card_042.png",
+    "caption": "自動產生卡片 42"
+  },
+  {
+    "id": "c043",
+    "title": "Card 043",
+    "description": "Auto-generated description for card 43.",
+    "rarity": "COMMON",
+    "image": "card_043.png",
+    "caption": "自動產生卡片 43"
+  },
+  {
+    "id": "c044",
+    "title": "Card 044",
+    "description": "Auto-generated description for card 44.",
+    "rarity": "UNCOMMON",
+    "image": "card_044.png",
+    "caption": "自動產生卡片 44"
+  },
+  {
+    "id": "c045",
+    "title": "Card 045",
+    "description": "Auto-generated description for card 45.",
+    "rarity": "COMMON",
+    "image": "card_045.png",
+    "caption": "自動產生卡片 45"
+  },
+  {
+    "id": "c046",
+    "title": "Card 046",
+    "description": "Auto-generated description for card 46.",
+    "rarity": "UNCOMMON",
+    "image": "card_046.png",
+    "caption": "自動產生卡片 46"
+  },
+  {
+    "id": "c047",
+    "title": "Card 047",
+    "description": "Auto-generated description for card 47.",
+    "rarity": "COMMON",
+    "image": "card_047.png",
+    "caption": "自動產生卡片 47"
+  },
+  {
+    "id": "c048",
+    "title": "Card 048",
+    "description": "Auto-generated description for card 48.",
+    "rarity": "UNCOMMON",
+    "image": "card_048.png",
+    "caption": "自動產生卡片 48"
+  },
+  {
+    "id": "c049",
+    "title": "Card 049",
+    "description": "Auto-generated description for card 49.",
+    "rarity": "COMMON",
+    "image": "card_049.png",
+    "caption": "自動產生卡片 49"
+  },
+  {
+    "id": "c050",
+    "title": "Card 050",
+    "description": "Auto-generated description for card 50.",
+    "rarity": "RARE",
+    "image": "card_050.png",
+    "caption": "自動產生卡片 50"
+  },
+  {
+    "id": "c051",
+    "title": "Card 051",
+    "description": "Auto-generated description for card 51.",
+    "rarity": "COMMON",
+    "image": "card_051.png",
+    "caption": "自動產生卡片 51"
+  },
+  {
+    "id": "c052",
+    "title": "Card 052",
+    "description": "Auto-generated description for card 52.",
+    "rarity": "UNCOMMON",
+    "image": "card_052.png",
+    "caption": "自動產生卡片 52"
+  },
+  {
+    "id": "c053",
+    "title": "Card 053",
+    "description": "Auto-generated description for card 53.",
+    "rarity": "COMMON",
+    "image": "card_053.png",
+    "caption": "自動產生卡片 53"
+  },
+  {
+    "id": "c054",
+    "title": "Card 054",
+    "description": "Auto-generated description for card 54.",
+    "rarity": "UNCOMMON",
+    "image": "card_054.png",
+    "caption": "自動產生卡片 54"
+  },
+  {
+    "id": "c055",
+    "title": "Card 055",
+    "description": "Auto-generated description for card 55.",
+    "rarity": "COMMON",
+    "image": "card_055.png",
+    "caption": "自動產生卡片 55"
+  },
+  {
+    "id": "c056",
+    "title": "Card 056",
+    "description": "Auto-generated description for card 56.",
+    "rarity": "UNCOMMON",
+    "image": "card_056.png",
+    "caption": "自動產生卡片 56"
+  },
+  {
+    "id": "c057",
+    "title": "Card 057",
+    "description": "Auto-generated description for card 57.",
+    "rarity": "COMMON",
+    "image": "card_057.png",
+    "caption": "自動產生卡片 57"
+  },
+  {
+    "id": "c058",
+    "title": "Card 058",
+    "description": "Auto-generated description for card 58.",
+    "rarity": "UNCOMMON",
+    "image": "card_058.png",
+    "caption": "自動產生卡片 58"
+  },
+  {
+    "id": "c059",
+    "title": "Card 059",
+    "description": "Auto-generated description for card 59.",
+    "rarity": "COMMON",
+    "image": "card_059.png",
+    "caption": "自動產生卡片 59"
+  },
+  {
+    "id": "c060",
+    "title": "Card 060",
+    "description": "Auto-generated description for card 60.",
+    "rarity": "RARE",
+    "image": "card_060.png",
+    "caption": "自動產生卡片 60"
+  },
+  {
+    "id": "c061",
+    "title": "Card 061",
+    "description": "Auto-generated description for card 61.",
+    "rarity": "COMMON",
+    "image": "card_061.png",
+    "caption": "自動產生卡片 61"
+  },
+  {
+    "id": "c062",
+    "title": "Card 062",
+    "description": "Auto-generated description for card 62.",
+    "rarity": "UNCOMMON",
+    "image": "card_062.png",
+    "caption": "自動產生卡片 62"
+  },
+  {
+    "id": "c063",
+    "title": "Card 063",
+    "description": "Auto-generated description for card 63.",
+    "rarity": "COMMON",
+    "image": "card_063.png",
+    "caption": "自動產生卡片 63"
+  },
+  {
+    "id": "c064",
+    "title": "Card 064",
+    "description": "Auto-generated description for card 64.",
+    "rarity": "UNCOMMON",
+    "image": "card_064.png",
+    "caption": "自動產生卡片 64"
+  },
+  {
+    "id": "c065",
+    "title": "Card 065",
+    "description": "Auto-generated description for card 65.",
+    "rarity": "COMMON",
+    "image": "card_065.png",
+    "caption": "自動產生卡片 65"
+  },
+  {
+    "id": "c066",
+    "title": "Card 066",
+    "description": "Auto-generated description for card 66.",
+    "rarity": "UNCOMMON",
+    "image": "card_066.png",
+    "caption": "自動產生卡片 66"
+  },
+  {
+    "id": "c067",
+    "title": "Card 067",
+    "description": "Auto-generated description for card 67.",
+    "rarity": "COMMON",
+    "image": "card_067.png",
+    "caption": "自動產生卡片 67"
+  },
+  {
+    "id": "c068",
+    "title": "Card 068",
+    "description": "Auto-generated description for card 68.",
+    "rarity": "UNCOMMON",
+    "image": "card_068.png",
+    "caption": "自動產生卡片 68"
+  },
+  {
+    "id": "c069",
+    "title": "Card 069",
+    "description": "Auto-generated description for card 69.",
+    "rarity": "COMMON",
+    "image": "card_069.png",
+    "caption": "自動產生卡片 69"
+  },
+  {
+    "id": "c070",
+    "title": "Card 070",
+    "description": "Auto-generated description for card 70.",
+    "rarity": "RARE",
+    "image": "card_070.png",
+    "caption": "自動產生卡片 70"
+  },
+  {
+    "id": "c071",
+    "title": "Card 071",
+    "description": "Auto-generated description for card 71.",
+    "rarity": "COMMON",
+    "image": "card_071.png",
+    "caption": "自動產生卡片 71"
+  },
+  {
+    "id": "c072",
+    "title": "Card 072",
+    "description": "Auto-generated description for card 72.",
+    "rarity": "UNCOMMON",
+    "image": "card_072.png",
+    "caption": "自動產生卡片 72"
+  },
+  {
+    "id": "c073",
+    "title": "Card 073",
+    "description": "Auto-generated description for card 73.",
+    "rarity": "COMMON",
+    "image": "card_073.png",
+    "caption": "自動產生卡片 73"
+  },
+  {
+    "id": "c074",
+    "title": "Card 074",
+    "description": "Auto-generated description for card 74.",
+    "rarity": "UNCOMMON",
+    "image": "card_074.png",
+    "caption": "自動產生卡片 74"
+  },
+  {
+    "id": "c075",
+    "title": "Card 075",
+    "description": "Auto-generated description for card 75.",
+    "rarity": "LEGENDARY",
+    "image": "card_075.png",
+    "caption": "自動產生卡片 75"
+  },
+  {
+    "id": "c076",
+    "title": "Card 076",
+    "description": "Auto-generated description for card 76.",
+    "rarity": "COMMON",
+    "image": "card_076.png",
+    "caption": "自動產生卡片 76"
+  },
+  {
+    "id": "c077",
+    "title": "Card 077",
+    "description": "Auto-generated description for card 77.",
+    "rarity": "COMMON",
+    "image": "card_077.png",
+    "caption": "自動產生卡片 77"
+  },
+  {
+    "id": "c078",
+    "title": "Card 078",
+    "description": "Auto-generated description for card 78.",
+    "rarity": "UNCOMMON",
+    "image": "card_078.png",
+    "caption": "自動產生卡片 78"
+  },
+  {
+    "id": "c079",
+    "title": "Card 079",
+    "description": "Auto-generated description for card 79.",
+    "rarity": "COMMON",
+    "image": "card_079.png",
+    "caption": "自動產生卡片 79"
+  },
+  {
+    "id": "c080",
+    "title": "Card 080",
+    "description": "Auto-generated description for card 80.",
+    "rarity": "RARE",
+    "image": "card_080.png",
+    "caption": "自動產生卡片 80"
+  },
+  {
+    "id": "c081",
+    "title": "Card 081",
+    "description": "Auto-generated description for card 81.",
+    "rarity": "COMMON",
+    "image": "card_081.png",
+    "caption": "自動產生卡片 81"
+  },
+  {
+    "id": "c082",
+    "title": "Card 082",
+    "description": "Auto-generated description for card 82.",
+    "rarity": "UNCOMMON",
+    "image": "card_082.png",
+    "caption": "自動產生卡片 82"
+  },
+  {
+    "id": "c083",
+    "title": "Card 083",
+    "description": "Auto-generated description for card 83.",
+    "rarity": "COMMON",
+    "image": "card_083.png",
+    "caption": "自動產生卡片 83"
+  },
+  {
+    "id": "c084",
+    "title": "Card 084",
+    "description": "Auto-generated description for card 84.",
+    "rarity": "UNCOMMON",
+    "image": "card_084.png",
+    "caption": "自動產生卡片 84"
+  },
+  {
+    "id": "c085",
+    "title": "Card 085",
+    "description": "Auto-generated description for card 85.",
+    "rarity": "COMMON",
+    "image": "card_085.png",
+    "caption": "自動產生卡片 85"
+  },
+  {
+    "id": "c086",
+    "title": "Card 086",
+    "description": "Auto-generated description for card 86.",
+    "rarity": "UNCOMMON",
+    "image": "card_086.png",
+    "caption": "自動產生卡片 86"
+  },
+  {
+    "id": "c087",
+    "title": "Card 087",
+    "description": "Auto-generated description for card 87.",
+    "rarity": "COMMON",
+    "image": "card_087.png",
+    "caption": "自動產生卡片 87"
+  },
+  {
+    "id": "c088",
+    "title": "Card 088",
+    "description": "Auto-generated description for card 88.",
+    "rarity": "UNCOMMON",
+    "image": "card_088.png",
+    "caption": "自動產生卡片 88"
+  },
+  {
+    "id": "c089",
+    "title": "Card 089",
+    "description": "Auto-generated description for card 89.",
+    "rarity": "COMMON",
+    "image": "card_089.png",
+    "caption": "自動產生卡片 89"
+  },
+  {
+    "id": "c090",
+    "title": "Card 090",
+    "description": "Auto-generated description for card 90.",
+    "rarity": "RARE",
+    "image": "card_090.png",
+    "caption": "自動產生卡片 90"
+  },
+  {
+    "id": "c091",
+    "title": "Card 091",
+    "description": "Auto-generated description for card 91.",
+    "rarity": "COMMON",
+    "image": "card_091.png",
+    "caption": "自動產生卡片 91"
+  },
+  {
+    "id": "c092",
+    "title": "Card 092",
+    "description": "Auto-generated description for card 92.",
+    "rarity": "UNCOMMON",
+    "image": "card_092.png",
+    "caption": "自動產生卡片 92"
+  },
+  {
+    "id": "c093",
+    "title": "Card 093",
+    "description": "Auto-generated description for card 93.",
+    "rarity": "COMMON",
+    "image": "card_093.png",
+    "caption": "自動產生卡片 93"
+  },
+  {
+    "id": "c094",
+    "title": "Card 094",
+    "description": "Auto-generated description for card 94.",
+    "rarity": "UNCOMMON",
+    "image": "card_094.png",
+    "caption": "自動產生卡片 94"
+  },
+  {
+    "id": "c095",
+    "title": "Card 095",
+    "description": "Auto-generated description for card 95.",
+    "rarity": "COMMON",
+    "image": "card_095.png",
+    "caption": "自動產生卡片 95"
+  },
+  {
+    "id": "c096",
+    "title": "Card 096",
+    "description": "Auto-generated description for card 96.",
+    "rarity": "UNCOMMON",
+    "image": "card_096.png",
+    "caption": "自動產生卡片 96"
+  },
+  {
+    "id": "c097",
+    "title": "Card 097",
+    "description": "Auto-generated description for card 97.",
+    "rarity": "COMMON",
+    "image": "card_097.png",
+    "caption": "自動產生卡片 97"
+  },
+  {
+    "id": "c098",
+    "title": "Card 098",
+    "description": "Auto-generated description for card 98.",
+    "rarity": "UNCOMMON",
+    "image": "card_098.png",
+    "caption": "自動產生卡片 98"
+  },
+  {
+    "id": "c099",
+    "title": "Card 099",
+    "description": "Auto-generated description for card 99.",
+    "rarity": "COMMON",
+    "image": "card_099.png",
+    "caption": "自動產生卡片 99"
+  },
+  {
+    "id": "c100",
+    "title": "Card 100",
+    "description": "Auto-generated description for card 100.",
+    "rarity": "RARE",
+    "image": "card_100.png",
+    "caption": "自動產生卡片 100"
   }
 ]
