@@ -1,13 +1,13 @@
 package com.net.protocol.packets;
 
-import java.io.Serializable;
-
 import com.net.Room.WaitRoom;
+import com.net.protocol.enums.PacketType;
 
-public class WaitRoomState implements Serializable{
+public class WaitRoomState extends Packet{
     private WaitRoom room;
 
     public WaitRoomState(WaitRoom room){
+        super(PacketType.WaitRoomState);
         this.room = room;
     }
 
