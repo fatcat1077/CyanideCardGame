@@ -1,0 +1,13 @@
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build folders
+build/
+out/
+bin/
+.gradle/
