@@ -1,14 +1,16 @@
 package com.net.protocol.packets;
 
-import java.io.Serializable;
+import com.net.protocol.enums.PacketType;
 
-public class Init implements Serializable{
+public class Init extends Packet{
     private int pid;
     private String name;
 
     public Init(int pid){
+        super(PacketType.Init);
         this.pid = pid;
     }
+
 
     public int getPID(){
         return pid;

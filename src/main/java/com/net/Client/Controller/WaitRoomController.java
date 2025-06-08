@@ -25,14 +25,15 @@ public class WaitRoomController {
 
     public void handle(Object obj){
         WaitRoomState roomState = (WaitRoomState) obj;
-        this.room = roomState.getWaitRoom();
+
+        update(roomState.getWaitRoom());
+    }
+
+    private void update(WaitRoom waitRoom){
+        this.room = waitRoom;
         this.host = this.room.getHost();
         this.players = this.room.getPlayers();
 
-        update();
-    }
-
-    private void update(){
         System.out.println("Now roomState: ");
         System.out.print("Players: ");
         for(Player player : players){
@@ -42,6 +43,7 @@ public class WaitRoomController {
         System.out.println(String.format("Room Host: %s (%d)", host.getName(), host.getPID()));
     }
 
+    // maybe will remove this command
     public void changeHost(int pid){
         if( this.pid == room.getHost().getPID()){ //check if i am host
             Player newHost = null;
@@ -57,17 +59,21 @@ public class WaitRoomController {
 
             WaitRoom newWaitRoom = this.room;
             newWaitRoom.setHost(newHost);
-            WaitRoomState newRoomState = new WaitRoomState(newWaitRoom);
-            try{
-                out.writeObject(newRoomState);
-                out.flush();
-                out.reset();
-            }catch(IOException e){
-                System.out.println("Sending newWaitRoomState error");
-            }
+            WaitRoomState newRoomStatePkt = new WaitRoomState(newWaitRoom);
+            sendPacket(newRoomStatePkt);
         }else{
             System.out.println("You are not host.");
             System.out.println("Host is : " + Integer.toString(room.getHost().getPID()));
         }
+    }
+
+    private void sendPacket(Object packet){
+        try{
+            out.writeObject(packet);
+            out.flush();
+            out.reset();
+        }catch(IOException e){
+            System.out.println(String.format("Sending %s packet error", packet.getClass().getSimpleName()));
+        }  
     }
 }

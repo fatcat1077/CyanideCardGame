@@ -15,7 +15,7 @@ public class Client {
     private Scanner scanner;
     private String name;
 
-    private PacketHandler handler;
+    private ClientPacketHandler handler;
 
     Client(String host, int port){
         try {
@@ -26,7 +26,7 @@ public class Client {
             System.out.print("enter your name :");
             this.name = this.scanner.nextLine();
 
-            handler = new PacketHandler(socket, name);
+            handler = new ClientPacketHandler(socket, name);
             handler.start();
 
 
@@ -36,7 +36,9 @@ public class Client {
         }
     }
 
+
     public static void main(String[] args){
+        // combine with GUI
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter invite code :");
         HOST = inviteCode.decodeInviteCode(scanner.nextLine());

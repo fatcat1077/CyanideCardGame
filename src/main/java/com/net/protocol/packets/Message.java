@@ -1,12 +1,14 @@
 package com.net.protocol.packets;
 
-import java.io.Serializable;
 
-public class Message implements Serializable{
+import com.net.protocol.enums.PacketType;
+
+public class Message extends Packet{
     private String sender;
     private String content;
 
     public Message(String sender, String content) {
+        super(PacketType.Message);
         this.sender = sender;
         this.content = content;
     }

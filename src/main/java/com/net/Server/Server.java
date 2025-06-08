@@ -10,24 +10,29 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.net.inviteCode;
 import com.net.Room.*;
+import com.net.Server.interfaces.ServerManager;
 
 
-public class Server {
+public class Server implements ServerManager{
     //net
     private static int PORT = 8888;
-    private static String IP = "192.168.0.23";
+    private static String IP = null;
     private ServerSocket serverSkt;
     
     //shared info
     private static final List<ObjectOutputStream> clients = new CopyOnWriteArrayList<>();
     private static final WaitRoom waitRoom = new WaitRoom();
+    private static final List<ServerPacketHandler> handlers = new CopyOnWriteArrayList<>();
 
     //variable
     private int cntId = 1;
+    private boolean running = false;
 
     
     Server(){
         try{
+            running = true;
+            IP = InetAddress.getLocalHost().getHostAddress();
             InetAddress addr = InetAddress.getByName(IP);
             serverSkt = new ServerSocket(PORT, 20, addr);
 
@@ -37,19 +42,38 @@ public class Server {
         }catch(IOException e){
             System.out.println("create server error");
         }
-        while(true){
+        while(running){
             try{
                 Socket clientSkt = serverSkt.accept();
                 System.out.println("clinet connected!!!");
-                new Thread(new PacketHandler(clientSkt, clients, waitRoom, cntId++)).start();
+
+                ServerPacketHandler handler = new ServerPacketHandler(clientSkt, clients, waitRoom, cntId++, this);
+                handlers.add(handler);
+                new Thread(handler).start();
 
             }catch(IOException e){
-                System.out.println("client connect error");
+                System.out.println("Server closed...");
+                return;
             }
         }
     }
 
-    public static void main(String args[]){ 
+    public void shutdownServer() {
+        running = false;
+
+        for(ServerPacketHandler handler : handlers){
+            handler.stop();
+        }
+
+        try {
+            serverSkt.close();
+            System.out.println("Server has been shut down.");
+        } catch (IOException e) {
+            System.out.println("Error closing server socket.");
+        }
+    }
+
+    public static void main(String args[]) throws Exception{ 
         new Server();
     }
 }
