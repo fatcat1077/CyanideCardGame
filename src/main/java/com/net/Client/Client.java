@@ -7,10 +7,6 @@ import java.util.*;
 import com.net.inviteCode;
 import com.players.Player;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 public class Client {
     //net
     private static String HOST;
