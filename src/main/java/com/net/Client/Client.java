@@ -7,6 +7,7 @@ import java.util.*;
 import com.net.inviteCode;
 import com.players.Player;
 
+
 public class Client {
     //net
     private static String HOST;
@@ -28,9 +29,11 @@ public class Client {
             this.scanner = new Scanner(System.in);
             
             System.out.print("enter your name :");
+
             this.player = new Player(this.scanner.nextLine());
 
             handler = new ClientPacketHandler(socket, player);
+
             handler.start();
 
 

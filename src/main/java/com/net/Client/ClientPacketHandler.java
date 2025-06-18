@@ -11,6 +11,7 @@ import com.net.protocol.packets.*;
 import com.players.Player;
 
 
+
 public class ClientPacketHandler{
     //net
     private Socket socket;
@@ -20,6 +21,7 @@ public class ClientPacketHandler{
 
     //individual info
     private Player player;
+
 
     //controller
     private MessageController msgController;
@@ -79,14 +81,17 @@ public class ClientPacketHandler{
 
         //return Init packet to server
         init.setName(this.player.getName());
+
         out.writeObject(init);
         out.flush();
 
         // open waitRoom
+
         this.waitRoomController = new WaitRoomController(player.getPID(), out, this.player);
 
         // open chat
         this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
+
         new Thread(this.msgController).start();
     }
 

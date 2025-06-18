@@ -11,6 +11,7 @@ public class WaitRoom implements Serializable{
     private volatile Player host;
     private String inviteCode; 
 
+
     public void addPlayer(Player player) {
         players.add(player);
         if (host == null) {
