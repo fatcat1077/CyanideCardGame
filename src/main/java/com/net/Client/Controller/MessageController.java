@@ -5,21 +5,20 @@ import java.util.Scanner;
 
 import com.net.protocol.packets.Disconnect;
 import com.net.protocol.packets.Message;
+import com.players.Player;
 
 public class MessageController implements Runnable{
     private ObjectOutputStream out;
-    private int pid;
-    private String name;
+    private Player player;
     private boolean running = false;
 
     //for change host
     WaitRoomController waitRoomController;
 
-    public MessageController(ObjectOutputStream out, String name, int playerId, WaitRoomController waitRoomController) throws IOException {
+    public MessageController(ObjectOutputStream out, Player player, WaitRoomController waitRoomController) throws IOException {
         this.running = true;
-        this.name = name;
         this.out = out;
-        this.pid = playerId;
+        this.player = player;
         this.waitRoomController = waitRoomController;
     }
 
@@ -45,7 +44,7 @@ public class MessageController implements Runnable{
             }
 
 
-            Message msgPkt = new Message(String.format("%s (%d)", name, pid), input);
+            Message msgPkt = new Message(String.format("%s (%d)", player.getName(), player.getPID()), input);
             sendPacket(msgPkt);
         }
         scanner.close();

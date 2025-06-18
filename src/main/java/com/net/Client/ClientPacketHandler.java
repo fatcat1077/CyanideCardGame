@@ -8,6 +8,7 @@ import java.net.Socket;
 import com.net.Client.Controller.*;
 import com.net.protocol.enums.PacketType;
 import com.net.protocol.packets.*;
+import com.players.Player;
 
 
 public class ClientPacketHandler{
@@ -18,16 +19,15 @@ public class ClientPacketHandler{
 
 
     //individual info
-    private String name;
-    private int pid;
+    private Player player;
 
     //controller
     private MessageController msgController;
     private WaitRoomController waitRoomController;
 
-    ClientPacketHandler(Socket socket, String name) throws IOException{
+    ClientPacketHandler(Socket socket, Player player) throws IOException{
         this.socket = socket;
-        this.name = name;
+        this.player = player;
         this.out = new ObjectOutputStream(this.socket.getOutputStream());
         this.in = new ObjectInputStream(this.socket.getInputStream());
     }
@@ -75,18 +75,18 @@ public class ClientPacketHandler{
 
     private void init(Object obj) throws IOException{
         Init init = (Init) obj;
-        this.pid = init.getPID();
+        this.player.setPID(init.getPID());
 
         //return Init packet to server
-        init.setName(name);
+        init.setName(this.player.getName());
         out.writeObject(init);
         out.flush();
 
         // open waitRoom
-        this.waitRoomController = new WaitRoomController(pid, out);
+        this.waitRoomController = new WaitRoomController(player.getPID(), out);
 
         // open chat
-        this.msgController = new MessageController(this.out, this.name, this.pid, this.waitRoomController);
+        this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
         new Thread(this.msgController).start();
     }
 
