@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.net.protocol.packets.Disconnect;
 import com.net.protocol.packets.Message;
+
 import com.players.Player;
 
 public class MessageController implements Runnable{
@@ -45,14 +46,15 @@ public class MessageController implements Runnable{
                     System.out.println("Game Start !!!!! \n");
                 }
                 continue;
+
             }
             if(input.equals("help")){
                 System.out.println("Commands:\n (1)disconnect\n(2)changeHost <newHost_pid>");
                 continue;
             }
 
-
             Message msgPkt = new Message(String.format("%s (%d)", player.getName(), player.getPID()), input);
+
             sendPacket(msgPkt);
         }
         scanner.close();

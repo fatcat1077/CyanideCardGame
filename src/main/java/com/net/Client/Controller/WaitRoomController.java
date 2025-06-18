@@ -2,7 +2,6 @@ package com.net.Client.Controller;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-
 import com.net.Room.WaitRoom;
 import com.net.protocol.packets.WaitRoomState;
 import com.players.Player;
@@ -71,8 +70,8 @@ public class WaitRoomController {
             System.out.println("Host is : " + Integer.toString(room.getHost().getPID()));
         }
     }
-
-        private void update(WaitRoom waitRoom){
+    
+    private void update(WaitRoom waitRoom){
         this.room = waitRoom;
         this.host = this.room.getHost();
 

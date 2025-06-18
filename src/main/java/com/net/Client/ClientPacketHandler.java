@@ -9,14 +9,11 @@ import com.net.Client.Controller.*;
 import com.net.protocol.enums.PacketType;
 import com.net.protocol.packets.*;
 import com.players.Player;
-
-
 public class ClientPacketHandler{
     //net
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-
 
     //individual info
     private Player player;
@@ -87,6 +84,7 @@ public class ClientPacketHandler{
 
         // open chat
         this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
+
         new Thread(this.msgController).start();
     }
 
