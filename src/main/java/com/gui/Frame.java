@@ -1,5 +1,7 @@
 package com.gui;
 
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 public class Frame extends JFrame {
@@ -9,10 +11,13 @@ public class Frame extends JFrame {
     Panel panel;
     
     public Frame() {
-        setSize(WIDTH, HEIGHT);
+        getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        //panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        panel = new LobbyPanel(WIDTH, HEIGHT, null);
         add(panel);
     }
 
@@ -26,6 +31,18 @@ public class Frame extends JFrame {
     }
 
     public void switchToLobby() {
+        remove(panel);
+        revalidate();
+        repaint();
+
+        panel = new LobbyPanel(WIDTH, HEIGHT, e -> switchToLobby());
+        add(panel);
+    }
+
+    public void switchToGame() {
         ;
+        revalidate();
+        repaint();
+
     }
 }

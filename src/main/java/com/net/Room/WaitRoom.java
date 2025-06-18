@@ -8,7 +8,7 @@ import com.players.Player;
 
 public class WaitRoom implements Serializable{
     private final List<Player> players = new CopyOnWriteArrayList<>();
-    private volatile Player host; 
+    private volatile Player host;
 
     public void addPlayer(Player player) {
         players.add(player);
