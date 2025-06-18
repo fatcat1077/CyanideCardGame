@@ -17,6 +17,8 @@ public class Player implements Serializable{
     private final String name;
     private int pid;
     private boolean dealer;     // 是否為莊家
+    private boolean isReady = false;
+
 
     /* ------------ 遊戲狀態 ------------ */
     private final List<Card> hand = new ArrayList<>();
@@ -59,6 +61,18 @@ public class Player implements Serializable{
     public void setPID(int pid){
         this.pid = pid;
     }
+
+
+    public boolean getReady(){
+        return this.isReady;
+    }
+    
+
+    public void changeReady(){
+        isReady = !isReady;
+    }
+
+
     public void resetForNewRound() {           // 每輪行動數歸 1
         actions = 1;
     }

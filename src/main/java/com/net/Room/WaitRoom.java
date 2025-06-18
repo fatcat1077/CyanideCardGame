@@ -8,7 +8,9 @@ import com.players.Player;
 
 public class WaitRoom implements Serializable{
     private final List<Player> players = new CopyOnWriteArrayList<>();
-    private volatile Player host; 
+    private volatile Player host;
+    private String inviteCode; 
+
 
     public void addPlayer(Player player) {
         players.add(player);
@@ -24,12 +26,37 @@ public class WaitRoom implements Serializable{
         }
     }
 
+    //getter
+
     public List<Player> getPlayers() {
         return players;
     }
 
     public Player getHost() {
         return host;
+    }
+
+    public String getInviteCode(){
+        return this.inviteCode;
+    }
+
+    public void setInviteCode(String inviteCode){
+        this.inviteCode = inviteCode;
+    }
+
+    // setter
+
+    public void setReady(Player readyPlayer){
+        boolean isExist = false;
+        for(Player player : players){
+            if(readyPlayer.getPID() == player.getPID()){
+                isExist = true;
+                player.changeReady();
+            }
+        }
+        if (!isExist) {
+            System.out.println("WaitRoom doesn't have the player to change ready");
+        }
     }
 
     public void setHost(Player newHost) {
