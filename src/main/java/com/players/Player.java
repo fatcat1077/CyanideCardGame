@@ -19,7 +19,6 @@ public class Player implements Serializable{
     private boolean dealer;     // 是否為莊家
     private boolean isReady = false;
 
-
     /* ------------ 遊戲狀態 ------------ */
     private final List<Card> hand = new ArrayList<>();
     private int score = 0;
@@ -62,7 +61,6 @@ public class Player implements Serializable{
         this.pid = pid;
     }
 
-
     public boolean getReady(){
         return this.isReady;
     }
@@ -71,7 +69,6 @@ public class Player implements Serializable{
     public void changeReady(){
         isReady = !isReady;
     }
-
 
     public void resetForNewRound() {           // 每輪行動數歸 1
         actions = 1;

@@ -9,19 +9,14 @@ import com.net.Client.Controller.*;
 import com.net.protocol.enums.PacketType;
 import com.net.protocol.packets.*;
 import com.players.Player;
-
-
-
 public class ClientPacketHandler{
     //net
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
-
     //individual info
     private Player player;
-
 
     //controller
     private MessageController msgController;
@@ -81,12 +76,10 @@ public class ClientPacketHandler{
 
         //return Init packet to server
         init.setName(this.player.getName());
-
         out.writeObject(init);
         out.flush();
 
         // open waitRoom
-
         this.waitRoomController = new WaitRoomController(player.getPID(), out, this.player);
 
         // open chat
