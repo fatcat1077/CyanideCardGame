@@ -37,6 +37,14 @@ public class MessageController implements Runnable{
                 int hostPID = Integer.parseInt(words[1]);
                 waitRoomController.changeHost(hostPID);
                 continue;
+            }else if (input.equals("ready")){
+                waitRoomController.ready();
+                continue;
+            }else if (input.equals("start")){
+                if(waitRoomController.startGame()){
+                    System.out.println("Game Start !!!!! \n");
+                }
+                continue;
             }
             if(input.equals("help")){
                 System.out.println("Commands:\n (1)disconnect\n(2)changeHost <newHost_pid>");

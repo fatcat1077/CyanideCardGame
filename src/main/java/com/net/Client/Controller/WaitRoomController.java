@@ -2,7 +2,6 @@ package com.net.Client.Controller;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.List;
 
 import com.net.Room.WaitRoom;
 import com.net.protocol.packets.WaitRoomState;
@@ -13,14 +12,15 @@ public class WaitRoomController {
     private ObjectOutputStream out;
 
     //info
-    private WaitRoom room;
+    private WaitRoom room; 
+    private Player player;
     private Player host;
-    private List<Player> players;
     private int pid;
 
-    public WaitRoomController(int pid, ObjectOutputStream out){
+    public WaitRoomController(int pid, ObjectOutputStream out, Player player){
         this.pid = pid;
         this.out = out;
+        this.player = player;
     }
 
     public void handle(Object obj){
@@ -29,18 +29,23 @@ public class WaitRoomController {
         update(roomState.getWaitRoom());
     }
 
-    private void update(WaitRoom waitRoom){
-        this.room = waitRoom;
-        this.host = this.room.getHost();
-        this.players = this.room.getPlayers();
+    public void ready(){
 
-        System.out.println("Now roomState: ");
-        System.out.print("Players: ");
-        for(Player player : players){
-            System.out.print(String.format("%s (%d), ", player.getName(), player.getPID()));
+        WaitRoom newWaitRoom = this.room;
+        newWaitRoom.setReady(this.player);
+        WaitRoomState newRoomStatePkt = new WaitRoomState(newWaitRoom);
+        sendPacket(newRoomStatePkt);
+    }
+
+    public boolean startGame(){
+        boolean start = true;
+        for(Player player : this.room.getPlayers()){
+            if(!player.getReady()){
+                start = false;
+            } 
+            return start;
         }
-        System.out.println("");
-        System.out.println(String.format("Room Host: %s (%d)", host.getName(), host.getPID()));
+        return start;
     }
 
     // maybe will remove this command
@@ -48,7 +53,7 @@ public class WaitRoomController {
         if( this.pid == room.getHost().getPID()){ //check if i am host
             Player newHost = null;
             boolean isExist = false;
-            for(Player player : players){
+            for(Player player : this.room.getPlayers()){
                 if(player.getPID() == pid){
                     newHost = player;
                     isExist = true;
@@ -65,6 +70,19 @@ public class WaitRoomController {
             System.out.println("You are not host.");
             System.out.println("Host is : " + Integer.toString(room.getHost().getPID()));
         }
+    }
+
+        private void update(WaitRoom waitRoom){
+        this.room = waitRoom;
+        this.host = this.room.getHost();
+
+        System.out.println("Now roomState: ");
+        System.out.print("Players: ");
+        for(Player player : this.room.getPlayers()){
+            System.out.println(String.format("%s (%d) ,ready: {%b} ", player.getName(), player.getPID(), player.getReady()));
+        }
+        System.out.println(String.format("Room Host: %s (%d)", host.getName(), host.getPID()));
+        System.out.println("----------------------");
     }
 
     private void sendPacket(Object packet){

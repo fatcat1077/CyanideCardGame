@@ -83,7 +83,7 @@ public class ClientPacketHandler{
         out.flush();
 
         // open waitRoom
-        this.waitRoomController = new WaitRoomController(player.getPID(), out);
+        this.waitRoomController = new WaitRoomController(player.getPID(), out, this.player);
 
         // open chat
         this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
