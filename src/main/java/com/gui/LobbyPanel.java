@@ -59,7 +59,6 @@ public class LobbyPanel extends Panel {
                 
             }
         });
-        // host
     }
 
     public void update(WaitRoom waitRoom) {
