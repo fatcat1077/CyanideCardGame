@@ -38,7 +38,10 @@ public class Server implements ServerManager{
 
 
             System.out.println("Server IP: " + IP);
-            System.out.println("Server Invite Code :" + inviteCode.encodeInviteCode(IP));
+            String invite_Code = inviteCode.encodeInviteCode(IP);
+            waitRoom.setInviteCode(invite_Code);
+            System.out.println("Server Invite Code :" + invite_Code);
+
         }catch(IOException e){
             System.out.println("create server error");
         }

@@ -5,7 +5,12 @@ import java.net.*;
 import java.util.*;
 
 import com.net.inviteCode;
+import com.players.Player;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 public class Client {
     //net
     private static String HOST;
@@ -13,8 +18,11 @@ public class Client {
     private Socket socket;
 
     private Scanner scanner;
-    private String name;
 
+    //info
+    private Player player;
+
+    //handler
     private ClientPacketHandler handler;
 
     Client(String host, int port){
@@ -24,9 +32,17 @@ public class Client {
             this.scanner = new Scanner(System.in);
             
             System.out.print("enter your name :");
-            this.name = this.scanner.nextLine();
+<<<<<<< HEAD
+            this.player = new Player(this.scanner.nextLine());
 
-            handler = new ClientPacketHandler(socket, name);
+            handler = new ClientPacketHandler(socket, player);
+=======
+
+            this.player = new Player(this.scanner.nextLine());
+
+            handler = new ClientPacketHandler(socket, player);
+
+>>>>>>> main
             handler.start();
 
 

@@ -6,20 +6,20 @@ import java.util.Scanner;
 import com.net.protocol.packets.Disconnect;
 import com.net.protocol.packets.Message;
 
+import com.players.Player;
+
 public class MessageController implements Runnable{
     private ObjectOutputStream out;
-    private int pid;
-    private String name;
+    private Player player;
     private boolean running = false;
 
     //for change host
     WaitRoomController waitRoomController;
 
-    public MessageController(ObjectOutputStream out, String name, int playerId, WaitRoomController waitRoomController) throws IOException {
+    public MessageController(ObjectOutputStream out, Player player, WaitRoomController waitRoomController) throws IOException {
         this.running = true;
-        this.name = name;
         this.out = out;
-        this.pid = playerId;
+        this.player = player;
         this.waitRoomController = waitRoomController;
     }
 
@@ -38,14 +38,23 @@ public class MessageController implements Runnable{
                 int hostPID = Integer.parseInt(words[1]);
                 waitRoomController.changeHost(hostPID);
                 continue;
+            }else if (input.equals("ready")){
+                waitRoomController.ready();
+                continue;
+            }else if (input.equals("start")){
+                if(waitRoomController.startGame()){
+                    System.out.println("Game Start !!!!! \n");
+                }
+                continue;
+
             }
             if(input.equals("help")){
                 System.out.println("Commands:\n (1)disconnect\n(2)changeHost <newHost_pid>");
                 continue;
             }
 
+            Message msgPkt = new Message(String.format("%s (%d)", player.getName(), player.getPID()), input);
 
-            Message msgPkt = new Message(String.format("%s (%d)", name, pid), input);
             sendPacket(msgPkt);
         }
         scanner.close();
