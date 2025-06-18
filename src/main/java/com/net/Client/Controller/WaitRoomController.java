@@ -2,7 +2,6 @@ package com.net.Client.Controller;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.List;
 
 
 import com.net.Room.WaitRoom;
@@ -49,6 +48,7 @@ public class WaitRoomController {
             return start;
         }
         return start;
+    }
 
     // maybe will remove this command
     public void changeHost(int pid){
