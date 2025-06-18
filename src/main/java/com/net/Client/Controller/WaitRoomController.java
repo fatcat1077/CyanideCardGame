@@ -76,10 +76,10 @@ public class WaitRoomController {
         this.room = waitRoom;
         this.host = this.room.getHost();
 
-        System.out.println("Now roomState: ");
-        System.out.print("Players: ");
+        System.out.println(String.format("Now RoomState (invite code = %s): ", waitRoom.getInviteCode()));
+        System.out.println("Players: ");
         for(Player player : this.room.getPlayers()){
-            System.out.println(String.format("%s (%d) ,ready: {%b} ", player.getName(), player.getPID(), player.getReady()));
+            System.out.println(String.format("%s (%d) ,ready: %b ", player.getName(), player.getPID(), player.getReady()));
         }
         System.out.println(String.format("Room Host: %s (%d)", host.getName(), host.getPID()));
         System.out.println("----------------------");
