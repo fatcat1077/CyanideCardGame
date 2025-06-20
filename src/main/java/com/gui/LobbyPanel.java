@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LobbyPanel extends Panel {
-    private JLabel inviteCodeLabel;                                     // update
+    private JLabel inviteCodeLabel;
     private List<JLabel> playerLabels = new CopyOnWriteArrayList<>();   // update
     private JButton readyButton;                                        // update
     private JButton startButton;                                        

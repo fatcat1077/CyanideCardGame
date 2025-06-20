@@ -6,6 +6,8 @@ import java.awt.desktop.AppEvent;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.net.Room.WaitRoom;
+
 public class ChatPanel extends JPanel {
     private JTextArea chatArea;
     private JTextField textField;

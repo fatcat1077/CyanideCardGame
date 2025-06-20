@@ -1,14 +1,13 @@
 package com.gui;
 
-import java.awt.Dimension;
-
+import java.awt.*;
 import javax.swing.*;
 
 public class Frame extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     
-    Panel panel;
+    private Panel panel;
     
     public Frame() {
         getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
