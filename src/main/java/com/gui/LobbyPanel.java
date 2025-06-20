@@ -12,12 +12,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class LobbyPanel extends Panel {
     private JLabel inviteCodeLabel;
     private List<JLabel> playerLabels = new CopyOnWriteArrayList<>();   // update
-    private JButton readyButton;                                        // update
-    private JButton startButton;                                        
+    private JButton startButton;                                        // update
+    private JButton readyButton;
     private ChatPanel chatPanel;
     private ActionListener onSwitch;
 
-    public LobbyPanel(int width, int height, ActionListener onSwitch) {
+    private boolean variableForTestIsHost;
+    private boolean variableForTestIsReady = false;
+
+    public LobbyPanel(int width, int height, /* 這裡會傳Client進來 */ActionListener onSwitch) {
         this.onSwitch = onSwitch;
 
         setBounds(0, 0, width, height);
@@ -38,12 +41,32 @@ public class LobbyPanel extends Panel {
             playerLabels.add(playerLabel);
         }
 
+        // 如果是房主，就display startButton
+        // 否則(只是房客)display readyButton
+
+        // 先設一個變數當作暫時測試
+        variableForTestIsHost = true;
+
+        // start button
+        startButton = new JButton();
+        startButton.setBounds(650, 500, 100, 50);
+        startButton.setText("Start");
+        startButton.setEnabled(false);
+        add(startButton);
+
+        // ready button
         readyButton = new JButton();
         readyButton.setBounds(650, 500, 100, 50);
         readyButton.setText("Ready");
         add(readyButton);
 
-        // start button
+        if (variableForTestIsHost) {
+            startButton.setVisible(true);
+            readyButton.setVisible(false);
+        } else {
+            startButton.setVisible(false);
+            readyButton.setVisible(true);
+        }
 
         chatPanel = new ChatPanel();
         chatPanel.setBounds(0, 300, 300, 300);
@@ -53,16 +76,52 @@ public class LobbyPanel extends Panel {
     }
 
     private void setAction() {
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 告訴Server遊戲開始
+            }
+        });
+
         readyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                if (!variableForTestIsReady) {
+                    variableForTestIsReady = true;
+                    readyButton.setText("Cancel");
+                    readyButton.setBackground(Color.GREEN);
+                } else {
+                    variableForTestIsReady = false;
+                    readyButton.setText("Ready");
+                    readyButton.setBackground(null);
+                }
             }
         });
     }
 
     public void update(WaitRoom waitRoom) {
-        ;
+        /*
+         * // players is gotton from WaitRoom
+         * for (int i = 0; i < playerLabels.length; i++) {
+         *     JLabel playerLabel = playerLabels.get(i);
+         * 
+         *     if (i < players.length) {
+         *         playerLabel.setText(player.getName());
+         *         if (player.getReady()) {
+         *             playerLabel.setBackground(Color.GREEN);
+         *         }
+         *     } else {
+         *         playerLabel.setText("");
+         *         playerLabel.setBackground(null);
+         *     }
+         *     
+         * }
+         * 
+         * // only for host
+         * if (IS-HOST and 人數 == 3 and ALL-PLAYERS-READY) {
+         *     startButton.setEnabled(true);
+         * }
+         */
         revalidate();
         repaint();
     }
