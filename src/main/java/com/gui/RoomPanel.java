@@ -63,7 +63,8 @@ public class RoomPanel extends Panel {
                 // 跟Server說要Lobby，並要切換Panel
                 Server server = new Server();
                 String inviteCode = server.getInviteCode(); // new Server
-                
+                new Thread(server).start();
+
                 try {
                     System.out.println("before new Client");
                     client = new Client(inviteCode, name);
@@ -71,8 +72,6 @@ public class RoomPanel extends Panel {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-
-                new Thread(server).start();
 
                 onSwitch.actionPerformed(null);
             }

@@ -3,6 +3,8 @@ package com.net.Client.Controller;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import com.net.Room.WaitRoom;
+import com.net.protocol.interfaces.SwitchListener;
+import com.net.protocol.interfaces.UpdateListener;
 import com.net.protocol.packets.StartGame;
 import com.net.protocol.packets.WaitRoomState;
 import com.players.Player;
@@ -18,8 +20,8 @@ public class WaitRoomController {
     private int pid;
 
     //listener
-    //private Interface updateListener;
-    //private Interface switchListener;
+    private UpdateListener updateListener;
+    private SwitchListener switchListener;
 
     public WaitRoomController(int pid, ObjectOutputStream out, Player player){
         this.pid = pid;
@@ -29,13 +31,13 @@ public class WaitRoomController {
 
     //todo
     //setter
-    // public void setUpdateListener(Interface updateListener){
-    //     this.updateListener = updateListener;
-    // }
+    public void setUpdateListener(UpdateListener updateListener){
+        this.updateListener = updateListener;
+    }
 
-    //  public void setSwitchListener(Interface switchListener){
-    //     this.switchListener = switchListener;
-    // }
+    public void setSwitchListener(SwitchListener switchListener){
+        this.switchListener = switchListener;
+    }
 
 
 
@@ -85,8 +87,14 @@ public class WaitRoomController {
     private void update(WaitRoom waitRoom){
         this.room = waitRoom;
         this.host = this.room.getHost();
-
-        //this.updateListener.update(); //update the waitroom
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("update");
+        this.updateListener.OnUpdate(waitRoom); //update the waitroom
+        /*
         System.out.println(String.format("Now RoomState (invite code = %s): ", waitRoom.getInviteCode()));
         System.out.println("Players: ");
         for(Player player : this.room.getPlayers()){
@@ -94,6 +102,7 @@ public class WaitRoomController {
         }
         System.out.println(String.format("Room Host: %s (%d)", host.getName(), host.getPID()));
         System.out.println("----------------------");
+        */
     }
 
     private void sendPacket(Object packet){

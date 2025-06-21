@@ -52,7 +52,9 @@ public class Server implements ServerManager, Runnable{
     @Override
     public void run(){
         while(running){
+            System.out.println("wait");
             try{
+
                 Socket clientSkt = serverSkt.accept();
                 System.out.println("clinet connected!!!");
 

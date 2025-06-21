@@ -7,6 +7,7 @@ import java.util.*;
 import com.net.inviteCode;
 import com.net.Client.Controller.WaitRoomController;
 import com.players.Player;
+import com.net.protocol.interfaces.*;
 
 public class Client {
     //net
@@ -21,8 +22,8 @@ public class Client {
     
     //todo :
     //listener
-    //private Interface updateListener;
-    //private Interface switchListener;
+    // private UpdateListener updateListener;
+    // private SwitchListener switchListener;
 
     private ClientPacketHandler handler;
 
@@ -45,9 +46,16 @@ public class Client {
         System.out.println(HOST);
         this.socket = new Socket(HOST, PORT);
         this.player = new Player(name);
+
+        System.out.println("a");
         this.handler = new ClientPacketHandler(socket, player);
 
-        this.handler.start();
+        System.out.println("b");
+
+        //this.handler.start();
+        new Thread(handler).start();
+
+        System.out.println("c");
     }
 
     public WaitRoomController getWaitRoomController(){
@@ -57,15 +65,19 @@ public class Client {
         return null;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     // todo
-    // public void setUpdateListener(Interface updateListener){
+    // public void setUpdateListener(UpdateListener updateListener){
     //     this.updateListener = updateListener;
     //     if(this.handler != null){
     //         this.handler.setUpdateListener(updateListener);
     //     }
     // }
 
-    //  public void setSwitchListener(Interface switchListener){
+    //  public void setSwitchListener(SwitchListener switchListener){
     //     this.switchListener = switchListener;
     //     if(this.handler != null){
     //         this.handler.setSwitchListener(switchListener);

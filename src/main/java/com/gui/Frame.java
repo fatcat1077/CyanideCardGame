@@ -34,6 +34,12 @@ public class Frame extends JFrame {
     }
 
     public void switchToLobby() {
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         client = ((RoomPanel) panel).getGeneratedClient();
 
         remove(panel);
@@ -44,11 +50,11 @@ public class Frame extends JFrame {
     }
 
     public void switchToGame() {
-        // remove(panel);
+        remove(panel);
         revalidate();
         repaint();
 
-        // panel = new GamePanel(WIDTH, HEIGHT, /* client, */e -> switchToEnd());
+        // panel = new GamePanel(WIDTH, HEIGHT, client, e -> switchToEnd());
         // add(panel);
 
     }
