@@ -29,7 +29,7 @@ public class Server implements ServerManager{
     private boolean running = false;
 
     
-    Server(){
+    public Server(){
         try{
             running = true;
             IP = InetAddress.getLocalHost().getHostAddress();

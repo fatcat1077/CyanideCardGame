@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.net.Room.WaitRoom;
+import com.net.Client.Client;
+import com.net.Client.Controller.WaitRoomController;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,11 +19,17 @@ public class LobbyPanel extends Panel {
     private ChatPanel chatPanel;
     private ActionListener onSwitch;
 
+    private Client client;
+    private WaitRoomController wrCtrl;
+
     private boolean variableForTestIsHost;
     private boolean variableForTestIsReady = false;
 
-    public LobbyPanel(int width, int height, /* 這裡會傳Client進來 */ActionListener onSwitch) {
+    public LobbyPanel(int width, int height, /* Client client, 這裡會傳Client進來 */ActionListener onSwitch) {
         this.onSwitch = onSwitch;
+        //this.client = client;
+        // this.wrctrl = ;
+        // client.setUpdateListener(waitRoom -> update(waitRoom));
 
         setBounds(0, 0, width, height);
         setLayout(null);
@@ -80,6 +88,7 @@ public class LobbyPanel extends Panel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // 告訴Server遊戲開始
+                // 改set成switch
             }
         });
 
@@ -90,10 +99,14 @@ public class LobbyPanel extends Panel {
                     variableForTestIsReady = true;
                     readyButton.setText("Cancel");
                     readyButton.setBackground(Color.GREEN);
+
+                    // wrCtrl.ready();
                 } else {
                     variableForTestIsReady = false;
                     readyButton.setText("Ready");
                     readyButton.setBackground(null);
+
+                    // wrCtrl.ready();
                 }
             }
         });
@@ -125,4 +138,9 @@ public class LobbyPanel extends Panel {
         revalidate();
         repaint();
     }
+    /*
+    private void switch() {
+        onSwitch.actionPerformed();
+    }
+    */
 }

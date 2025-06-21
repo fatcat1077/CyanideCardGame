@@ -3,6 +3,8 @@ package com.gui;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.net.Server.Server;
+
 public class RoomPanel extends Panel {
     private JButton createButton;
     private JButton joinButton;
@@ -52,6 +54,9 @@ public class RoomPanel extends Panel {
                 }
 
                 // 跟Server說要Lobby，並要切換Panel
+                //new Server();
+
+                onSwitch.actionPerformed(null);
             }
         });
 
@@ -62,12 +67,13 @@ public class RoomPanel extends Panel {
                     hintLabel.setText("Enter name!");
                     return;
                 }
-
+                
                 if (!isInviteCode(inviteCodeField.getText())) {
                     hintLabel.setText("Wrong invite code!");
                     return;
                 }
 
+                client = new Client(,);
                 // 還有一種可能，房號不存在
             }
         });
