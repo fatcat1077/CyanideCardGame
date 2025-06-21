@@ -1,6 +1,6 @@
 [
   {
-    "id": "c001",
+    "id": "1",
     "title": "Card 001",
     "description": "Auto-generated description for card 1.",
     "rarity": "COMMON",
@@ -8,7 +8,7 @@
     "caption": "自動產生卡片 1"
   },
   {
-    "id": "c002",
+    "id": "2",
     "title": "Card 002",
     "description": "Auto-generated description for card 2.",
     "rarity": "COMMON",
@@ -16,7 +16,7 @@
     "caption": "自動產生卡片 2"
   },
   {
-    "id": "c003",
+    "id": "3",
     "title": "Card 003",
     "description": "Auto-generated description for card 3.",
     "rarity": "COMMON",
@@ -24,7 +24,7 @@
     "caption": "自動產生卡片 3"
   },
   {
-    "id": "c004",
+    "id": "4",
     "title": "Card 004",
     "description": "Auto-generated description for card 4.",
     "rarity": "UNCOMMON",
@@ -32,7 +32,7 @@
     "caption": "自動產生卡片 4"
   },
   {
-    "id": "c005",
+    "id": "5",
     "title": "Card 005",
     "description": "Auto-generated description for card 5.",
     "rarity": "COMMON",
@@ -40,7 +40,7 @@
     "caption": "自動產生卡片 5"
   },
   {
-    "id": "c006",
+    "id": "6",
     "title": "Card 006",
     "description": "Auto-generated description for card 6.",
     "rarity": "UNCOMMON",
@@ -48,7 +48,7 @@
     "caption": "自動產生卡片 6"
   },
   {
-    "id": "c007",
+    "id": "7",
     "title": "Card 007",
     "description": "Auto-generated description for card 7.",
     "rarity": "COMMON",
@@ -56,7 +56,7 @@
     "caption": "自動產生卡片 7"
   },
   {
-    "id": "c008",
+    "id": "8",
     "title": "Card 008",
     "description": "Auto-generated description for card 8.",
     "rarity": "UNCOMMON",
@@ -64,7 +64,7 @@
     "caption": "自動產生卡片 8"
   },
   {
-    "id": "c009",
+    "id": "9",
     "title": "Card 009",
     "description": "Auto-generated description for card 9.",
     "rarity": "COMMON",
@@ -72,7 +72,7 @@
     "caption": "自動產生卡片 9"
   },
   {
-    "id": "c010",
+    "id": "10",
     "title": "Card 010",
     "description": "Auto-generated description for card 10.",
     "rarity": "RARE",
@@ -80,7 +80,7 @@
     "caption": "自動產生卡片 10"
   },
   {
-    "id": "c011",
+    "id": "11",
     "title": "Card 011",
     "description": "Auto-generated description for card 11.",
     "rarity": "COMMON",
@@ -88,7 +88,7 @@
     "caption": "自動產生卡片 11"
   },
   {
-    "id": "c012",
+    "id": "12",
     "title": "Card 012",
     "description": "Auto-generated description for card 12.",
     "rarity": "UNCOMMON",
@@ -96,7 +96,7 @@
     "caption": "自動產生卡片 12"
   },
   {
-    "id": "c013",
+    "id": "13",
     "title": "Card 013",
     "description": "Auto-generated description for card 13.",
     "rarity": "COMMON",
@@ -104,7 +104,7 @@
     "caption": "自動產生卡片 13"
   },
   {
-    "id": "c014",
+    "id": "14",
     "title": "Card 014",
     "description": "Auto-generated description for card 14.",
     "rarity": "UNCOMMON",
@@ -112,7 +112,7 @@
     "caption": "自動產生卡片 14"
   },
   {
-    "id": "c015",
+    "id": "15",
     "title": "Card 015",
     "description": "Auto-generated description for card 15.",
     "rarity": "COMMON",
@@ -120,7 +120,7 @@
     "caption": "自動產生卡片 15"
   },
   {
-    "id": "c016",
+    "id": "16",
     "title": "Card 016",
     "description": "Auto-generated description for card 16.",
     "rarity": "UNCOMMON",
@@ -128,7 +128,7 @@
     "caption": "自動產生卡片 16"
   },
   {
-    "id": "c017",
+    "id": "17",
     "title": "Card 017",
     "description": "Auto-generated description for card 17.",
     "rarity": "COMMON",
@@ -136,7 +136,7 @@
     "caption": "自動產生卡片 17"
   },
   {
-    "id": "c018",
+    "id": "18",
     "title": "Card 018",
     "description": "Auto-generated description for card 18.",
     "rarity": "UNCOMMON",
@@ -144,7 +144,7 @@
     "caption": "自動產生卡片 18"
   },
   {
-    "id": "c019",
+    "id": "19",
     "title": "Card 019",
     "description": "Auto-generated description for card 19.",
     "rarity": "COMMON",
@@ -152,7 +152,7 @@
     "caption": "自動產生卡片 19"
   },
   {
-    "id": "c020",
+    "id": "20",
     "title": "Card 020",
     "description": "Auto-generated description for card 20.",
     "rarity": "RARE",
@@ -160,7 +160,7 @@
     "caption": "自動產生卡片 20"
   },
   {
-    "id": "c021",
+    "id": "21",
     "title": "Card 021",
     "description": "Auto-generated description for card 21.",
     "rarity": "COMMON",
@@ -168,7 +168,7 @@
     "caption": "自動產生卡片 21"
   },
   {
-    "id": "c022",
+    "id": "22",
     "title": "Card 022",
     "description": "Auto-generated description for card 22.",
     "rarity": "UNCOMMON",
@@ -176,7 +176,7 @@
     "caption": "自動產生卡片 22"
   },
   {
-    "id": "c023",
+    "id": "23",
     "title": "Card 023",
     "description": "Auto-generated description for card 23.",
     "rarity": "COMMON",
@@ -184,7 +184,7 @@
     "caption": "自動產生卡片 23"
   },
   {
-    "id": "c024",
+    "id": "24",
     "title": "Card 024",
     "description": "Auto-generated description for card 24.",
     "rarity": "UNCOMMON",
@@ -192,7 +192,7 @@
     "caption": "自動產生卡片 24"
   },
   {
-    "id": "c025",
+    "id": "25",
     "title": "Card 025",
     "description": "Auto-generated description for card 25.",
     "rarity": "LEGENDARY",
@@ -200,7 +200,7 @@
     "caption": "自動產生卡片 25"
   },
   {
-    "id": "c026",
+    "id": "26",
     "title": "Card 026",
     "description": "Auto-generated description for card 26.",
     "rarity": "COMMON",
@@ -208,7 +208,7 @@
     "caption": "自動產生卡片 26"
   },
   {
-    "id": "c027",
+    "id": "27",
     "title": "Card 027",
     "description": "Auto-generated description for card 27.",
     "rarity": "COMMON",
@@ -216,7 +216,7 @@
     "caption": "自動產生卡片 27"
   },
   {
-    "id": "c028",
+    "id": "28",
     "title": "Card 028",
     "description": "Auto-generated description for card 28.",
     "rarity": "UNCOMMON",
@@ -224,7 +224,7 @@
     "caption": "自動產生卡片 28"
   },
   {
-    "id": "c029",
+    "id": "29",
     "title": "Card 029",
     "description": "Auto-generated description for card 29.",
     "rarity": "COMMON",
@@ -232,7 +232,7 @@
     "caption": "自動產生卡片 29"
   },
   {
-    "id": "c030",
+    "id": "30",
     "title": "Card 030",
     "description": "Auto-generated description for card 30.",
     "rarity": "RARE",
@@ -240,7 +240,7 @@
     "caption": "自動產生卡片 30"
   },
   {
-    "id": "c031",
+    "id": "31",
     "title": "Card 031",
     "description": "Auto-generated description for card 31.",
     "rarity": "COMMON",
@@ -248,7 +248,7 @@
     "caption": "自動產生卡片 31"
   },
   {
-    "id": "c032",
+    "id": "32",
     "title": "Card 032",
     "description": "Auto-generated description for card 32.",
     "rarity": "UNCOMMON",
@@ -256,7 +256,7 @@
     "caption": "自動產生卡片 32"
   },
   {
-    "id": "c033",
+    "id": "33",
     "title": "Card 033",
     "description": "Auto-generated description for card 33.",
     "rarity": "COMMON",
@@ -264,7 +264,7 @@
     "caption": "自動產生卡片 33"
   },
   {
-    "id": "c034",
+    "id": "34",
     "title": "Card 034",
     "description": "Auto-generated description for card 34.",
     "rarity": "UNCOMMON",
@@ -272,7 +272,7 @@
     "caption": "自動產生卡片 34"
   },
   {
-    "id": "c035",
+    "id": "35",
     "title": "Card 035",
     "description": "Auto-generated description for card 35.",
     "rarity": "COMMON",
@@ -280,7 +280,7 @@
     "caption": "自動產生卡片 35"
   },
   {
-    "id": "c036",
+    "id": "36",
     "title": "Card 036",
     "description": "Auto-generated description for card 36.",
     "rarity": "UNCOMMON",
@@ -288,7 +288,7 @@
     "caption": "自動產生卡片 36"
   },
   {
-    "id": "c037",
+    "id": "37",
     "title": "Card 037",
     "description": "Auto-generated description for card 37.",
     "rarity": "COMMON",
@@ -296,7 +296,7 @@
     "caption": "自動產生卡片 37"
   },
   {
-    "id": "c038",
+    "id": "38",
     "title": "Card 038",
     "description": "Auto-generated description for card 38.",
     "rarity": "UNCOMMON",
@@ -304,7 +304,7 @@
     "caption": "自動產生卡片 38"
   },
   {
-    "id": "c039",
+    "id": "39",
     "title": "Card 039",
     "description": "Auto-generated description for card 39.",
     "rarity": "COMMON",
@@ -312,7 +312,7 @@
     "caption": "自動產生卡片 39"
   },
   {
-    "id": "c040",
+    "id": "40",
     "title": "Card 040",
     "description": "Auto-generated description for card 40.",
     "rarity": "RARE",
@@ -320,7 +320,7 @@
     "caption": "自動產生卡片 40"
   },
   {
-    "id": "c041",
+    "id": "41",
     "title": "Card 041",
     "description": "Auto-generated description for card 41.",
     "rarity": "COMMON",
@@ -328,7 +328,7 @@
     "caption": "自動產生卡片 41"
   },
   {
-    "id": "c042",
+    "id": "42",
     "title": "Card 042",
     "description": "Auto-generated description for card 42.",
     "rarity": "UNCOMMON",
@@ -336,7 +336,7 @@
     "caption": "自動產生卡片 42"
   },
   {
-    "id": "c043",
+    "id": "43",
     "title": "Card 043",
     "description": "Auto-generated description for card 43.",
     "rarity": "COMMON",
@@ -344,7 +344,7 @@
     "caption": "自動產生卡片 43"
   },
   {
-    "id": "c044",
+    "id": "44",
     "title": "Card 044",
     "description": "Auto-generated description for card 44.",
     "rarity": "UNCOMMON",
@@ -352,7 +352,7 @@
     "caption": "自動產生卡片 44"
   },
   {
-    "id": "c045",
+    "id": "45",
     "title": "Card 045",
     "description": "Auto-generated description for card 45.",
     "rarity": "COMMON",
@@ -360,7 +360,7 @@
     "caption": "自動產生卡片 45"
   },
   {
-    "id": "c046",
+    "id": "46",
     "title": "Card 046",
     "description": "Auto-generated description for card 46.",
     "rarity": "UNCOMMON",
@@ -368,7 +368,7 @@
     "caption": "自動產生卡片 46"
   },
   {
-    "id": "c047",
+    "id": "47",
     "title": "Card 047",
     "description": "Auto-generated description for card 47.",
     "rarity": "COMMON",
@@ -376,7 +376,7 @@
     "caption": "自動產生卡片 47"
   },
   {
-    "id": "c048",
+    "id": "48",
     "title": "Card 048",
     "description": "Auto-generated description for card 48.",
     "rarity": "UNCOMMON",
@@ -384,7 +384,7 @@
     "caption": "自動產生卡片 48"
   },
   {
-    "id": "c049",
+    "id": "49",
     "title": "Card 049",
     "description": "Auto-generated description for card 49.",
     "rarity": "COMMON",
@@ -392,7 +392,7 @@
     "caption": "自動產生卡片 49"
   },
   {
-    "id": "c050",
+    "id": "50",
     "title": "Card 050",
     "description": "Auto-generated description for card 50.",
     "rarity": "RARE",
@@ -400,7 +400,7 @@
     "caption": "自動產生卡片 50"
   },
   {
-    "id": "c051",
+    "id": "51",
     "title": "Card 051",
     "description": "Auto-generated description for card 51.",
     "rarity": "COMMON",
@@ -408,7 +408,7 @@
     "caption": "自動產生卡片 51"
   },
   {
-    "id": "c052",
+    "id": "52",
     "title": "Card 052",
     "description": "Auto-generated description for card 52.",
     "rarity": "UNCOMMON",
@@ -416,7 +416,7 @@
     "caption": "自動產生卡片 52"
   },
   {
-    "id": "c053",
+    "id": "53",
     "title": "Card 053",
     "description": "Auto-generated description for card 53.",
     "rarity": "COMMON",
@@ -424,7 +424,7 @@
     "caption": "自動產生卡片 53"
   },
   {
-    "id": "c054",
+    "id": "54",
     "title": "Card 054",
     "description": "Auto-generated description for card 54.",
     "rarity": "UNCOMMON",
@@ -432,7 +432,7 @@
     "caption": "自動產生卡片 54"
   },
   {
-    "id": "c055",
+    "id": "55",
     "title": "Card 055",
     "description": "Auto-generated description for card 55.",
     "rarity": "COMMON",
@@ -440,7 +440,7 @@
     "caption": "自動產生卡片 55"
   },
   {
-    "id": "c056",
+    "id": "56",
     "title": "Card 056",
     "description": "Auto-generated description for card 56.",
     "rarity": "UNCOMMON",
@@ -448,7 +448,7 @@
     "caption": "自動產生卡片 56"
   },
   {
-    "id": "c057",
+    "id": "57",
     "title": "Card 057",
     "description": "Auto-generated description for card 57.",
     "rarity": "COMMON",
@@ -456,7 +456,7 @@
     "caption": "自動產生卡片 57"
   },
   {
-    "id": "c058",
+    "id": "58",
     "title": "Card 058",
     "description": "Auto-generated description for card 58.",
     "rarity": "UNCOMMON",
@@ -464,7 +464,7 @@
     "caption": "自動產生卡片 58"
   },
   {
-    "id": "c059",
+    "id": "59",
     "title": "Card 059",
     "description": "Auto-generated description for card 59.",
     "rarity": "COMMON",
@@ -472,7 +472,7 @@
     "caption": "自動產生卡片 59"
   },
   {
-    "id": "c060",
+    "id": "60",
     "title": "Card 060",
     "description": "Auto-generated description for card 60.",
     "rarity": "RARE",
@@ -480,7 +480,7 @@
     "caption": "自動產生卡片 60"
   },
   {
-    "id": "c061",
+    "id": "61",
     "title": "Card 061",
     "description": "Auto-generated description for card 61.",
     "rarity": "COMMON",
@@ -488,7 +488,7 @@
     "caption": "自動產生卡片 61"
   },
   {
-    "id": "c062",
+    "id": "62",
     "title": "Card 062",
     "description": "Auto-generated description for card 62.",
     "rarity": "UNCOMMON",
@@ -496,7 +496,7 @@
     "caption": "自動產生卡片 62"
   },
   {
-    "id": "c063",
+    "id": "63",
     "title": "Card 063",
     "description": "Auto-generated description for card 63.",
     "rarity": "COMMON",
@@ -504,7 +504,7 @@
     "caption": "自動產生卡片 63"
   },
   {
-    "id": "c064",
+    "id": "64",
     "title": "Card 064",
     "description": "Auto-generated description for card 64.",
     "rarity": "UNCOMMON",
@@ -512,7 +512,7 @@
     "caption": "自動產生卡片 64"
   },
   {
-    "id": "c065",
+    "id": "65",
     "title": "Card 065",
     "description": "Auto-generated description for card 65.",
     "rarity": "COMMON",
@@ -520,7 +520,7 @@
     "caption": "自動產生卡片 65"
   },
   {
-    "id": "c066",
+    "id": "66",
     "title": "Card 066",
     "description": "Auto-generated description for card 66.",
     "rarity": "UNCOMMON",
@@ -528,7 +528,7 @@
     "caption": "自動產生卡片 66"
   },
   {
-    "id": "c067",
+    "id": "67",
     "title": "Card 067",
     "description": "Auto-generated description for card 67.",
     "rarity": "COMMON",
@@ -536,7 +536,7 @@
     "caption": "自動產生卡片 67"
   },
   {
-    "id": "c068",
+    "id": "68",
     "title": "Card 068",
     "description": "Auto-generated description for card 68.",
     "rarity": "UNCOMMON",
@@ -544,7 +544,7 @@
     "caption": "自動產生卡片 68"
   },
   {
-    "id": "c069",
+    "id": "69",
     "title": "Card 069",
     "description": "Auto-generated description for card 69.",
     "rarity": "COMMON",
@@ -552,7 +552,7 @@
     "caption": "自動產生卡片 69"
   },
   {
-    "id": "c070",
+    "id": "70",
     "title": "Card 070",
     "description": "Auto-generated description for card 70.",
     "rarity": "RARE",
@@ -560,7 +560,7 @@
     "caption": "自動產生卡片 70"
   },
   {
-    "id": "c071",
+    "id": "71",
     "title": "Card 071",
     "description": "Auto-generated description for card 71.",
     "rarity": "COMMON",
@@ -568,7 +568,7 @@
     "caption": "自動產生卡片 71"
   },
   {
-    "id": "c072",
+    "id": "72",
     "title": "Card 072",
     "description": "Auto-generated description for card 72.",
     "rarity": "UNCOMMON",
@@ -576,7 +576,7 @@
     "caption": "自動產生卡片 72"
   },
   {
-    "id": "c073",
+    "id": "73",
     "title": "Card 073",
     "description": "Auto-generated description for card 73.",
     "rarity": "COMMON",
@@ -584,7 +584,7 @@
     "caption": "自動產生卡片 73"
   },
   {
-    "id": "c074",
+    "id": "74",
     "title": "Card 074",
     "description": "Auto-generated description for card 74.",
     "rarity": "UNCOMMON",
@@ -592,7 +592,7 @@
     "caption": "自動產生卡片 74"
   },
   {
-    "id": "c075",
+    "id": "75",
     "title": "Card 075",
     "description": "Auto-generated description for card 75.",
     "rarity": "LEGENDARY",
@@ -600,7 +600,7 @@
     "caption": "自動產生卡片 75"
   },
   {
-    "id": "c076",
+    "id": "76",
     "title": "Card 076",
     "description": "Auto-generated description for card 76.",
     "rarity": "COMMON",
@@ -608,7 +608,7 @@
     "caption": "自動產生卡片 76"
   },
   {
-    "id": "c077",
+    "id": "77",
     "title": "Card 077",
     "description": "Auto-generated description for card 77.",
     "rarity": "COMMON",
@@ -616,7 +616,7 @@
     "caption": "自動產生卡片 77"
   },
   {
-    "id": "c078",
+    "id": "78",
     "title": "Card 078",
     "description": "Auto-generated description for card 78.",
     "rarity": "UNCOMMON",
@@ -624,7 +624,7 @@
     "caption": "自動產生卡片 78"
   },
   {
-    "id": "c079",
+    "id": "79",
     "title": "Card 079",
     "description": "Auto-generated description for card 79.",
     "rarity": "COMMON",
@@ -632,7 +632,7 @@
     "caption": "自動產生卡片 79"
   },
   {
-    "id": "c080",
+    "id": "80",
     "title": "Card 080",
     "description": "Auto-generated description for card 80.",
     "rarity": "RARE",
@@ -640,7 +640,7 @@
     "caption": "自動產生卡片 80"
   },
   {
-    "id": "c081",
+    "id": "81",
     "title": "Card 081",
     "description": "Auto-generated description for card 81.",
     "rarity": "COMMON",
@@ -648,7 +648,7 @@
     "caption": "自動產生卡片 81"
   },
   {
-    "id": "c082",
+    "id": "82",
     "title": "Card 082",
     "description": "Auto-generated description for card 82.",
     "rarity": "UNCOMMON",
@@ -656,7 +656,7 @@
     "caption": "自動產生卡片 82"
   },
   {
-    "id": "c083",
+    "id": "83",
     "title": "Card 083",
     "description": "Auto-generated description for card 83.",
     "rarity": "COMMON",
@@ -664,7 +664,7 @@
     "caption": "自動產生卡片 83"
   },
   {
-    "id": "c084",
+    "id": "84",
     "title": "Card 084",
     "description": "Auto-generated description for card 84.",
     "rarity": "UNCOMMON",
@@ -672,7 +672,7 @@
     "caption": "自動產生卡片 84"
   },
   {
-    "id": "c085",
+    "id": "85",
     "title": "Card 085",
     "description": "Auto-generated description for card 85.",
     "rarity": "COMMON",
@@ -680,7 +680,7 @@
     "caption": "自動產生卡片 85"
   },
   {
-    "id": "c086",
+    "id": "86",
     "title": "Card 086",
     "description": "Auto-generated description for card 86.",
     "rarity": "UNCOMMON",
@@ -688,7 +688,7 @@
     "caption": "自動產生卡片 86"
   },
   {
-    "id": "c087",
+    "id": "87",
     "title": "Card 087",
     "description": "Auto-generated description for card 87.",
     "rarity": "COMMON",
@@ -696,7 +696,7 @@
     "caption": "自動產生卡片 87"
   },
   {
-    "id": "c088",
+    "id": "88",
     "title": "Card 088",
     "description": "Auto-generated description for card 88.",
     "rarity": "UNCOMMON",
@@ -704,7 +704,7 @@
     "caption": "自動產生卡片 88"
   },
   {
-    "id": "c089",
+    "id": "89",
     "title": "Card 089",
     "description": "Auto-generated description for card 89.",
     "rarity": "COMMON",
@@ -712,7 +712,7 @@
     "caption": "自動產生卡片 89"
   },
   {
-    "id": "c090",
+    "id": "90",
     "title": "Card 090",
     "description": "Auto-generated description for card 90.",
     "rarity": "RARE",
@@ -720,7 +720,7 @@
     "caption": "自動產生卡片 90"
   },
   {
-    "id": "c091",
+    "id": "91",
     "title": "Card 091",
     "description": "Auto-generated description for card 91.",
     "rarity": "COMMON",
@@ -728,7 +728,7 @@
     "caption": "自動產生卡片 91"
   },
   {
-    "id": "c092",
+    "id": "92",
     "title": "Card 092",
     "description": "Auto-generated description for card 92.",
     "rarity": "UNCOMMON",
@@ -736,7 +736,7 @@
     "caption": "自動產生卡片 92"
   },
   {
-    "id": "c093",
+    "id": "93",
     "title": "Card 093",
     "description": "Auto-generated description for card 93.",
     "rarity": "COMMON",
@@ -744,7 +744,7 @@
     "caption": "自動產生卡片 93"
   },
   {
-    "id": "c094",
+    "id": "94",
     "title": "Card 094",
     "description": "Auto-generated description for card 94.",
     "rarity": "UNCOMMON",
@@ -752,7 +752,7 @@
     "caption": "自動產生卡片 94"
   },
   {
-    "id": "c095",
+    "id": "95",
     "title": "Card 095",
     "description": "Auto-generated description for card 95.",
     "rarity": "COMMON",
@@ -760,7 +760,7 @@
     "caption": "自動產生卡片 95"
   },
   {
-    "id": "c096",
+    "id": "96",
     "title": "Card 096",
     "description": "Auto-generated description for card 96.",
     "rarity": "UNCOMMON",
@@ -768,7 +768,7 @@
     "caption": "自動產生卡片 96"
   },
   {
-    "id": "c097",
+    "id": "97",
     "title": "Card 097",
     "description": "Auto-generated description for card 97.",
     "rarity": "COMMON",
@@ -776,7 +776,7 @@
     "caption": "自動產生卡片 97"
   },
   {
-    "id": "c098",
+    "id": "98",
     "title": "Card 098",
     "description": "Auto-generated description for card 98.",
     "rarity": "UNCOMMON",
@@ -784,7 +784,7 @@
     "caption": "自動產生卡片 98"
   },
   {
-    "id": "c099",
+    "id": "99",
     "title": "Card 099",
     "description": "Auto-generated description for card 99.",
     "rarity": "COMMON",
@@ -792,7 +792,7 @@
     "caption": "自動產生卡片 99"
   },
   {
-    "id": "c100",
+    "id": "100",
     "title": "Card 100",
     "description": "Auto-generated description for card 100.",
     "rarity": "RARE",

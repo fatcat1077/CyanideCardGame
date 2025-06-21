@@ -2,12 +2,14 @@ package com.game;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.cards.base.Card;
 import com.cards.base.CardFactory;
@@ -28,9 +30,11 @@ public class GameState {
 
     /* ─────── 回合級資料 ─────── */
     private Card winningCard = null;
-    private final List<Card>           dealerChosenCards = new ArrayList<>(2);
-    private final List<Card>        chosed_card_list  = new ArrayList<>();  
-    private final Map<Player, Card>    playerChosenCard  = new LinkedHashMap<>();
+    private final List<Card> dealerChosenCards = new CopyOnWriteArrayList<>();
+    private final List<Card> tableCards        = new CopyOnWriteArrayList<>(
+            Arrays.asList(new Card[3]));
+    private final Map<Integer,Integer> playerChosenMap = new LinkedHashMap<>();
+    //private final Map<Player, Card>    playerChosenCard  = new LinkedHashMap<>();
     private int                        dealerIndex       = -1;
     private Player  roundWinner = null;   // 
 
@@ -61,8 +65,10 @@ public class GameState {
     public List<Player>             getPlayers()          { return players; }
     public Player                   getDealer()           { return players.get(dealerIndex); }
     public List<Card>               getDealerChosenCards(){ return dealerChosenCards; }
-    public Map<Player, Card>        getPlayerChosenCard() { return playerChosenCard; }
-    public List<Card> getChosedCardList(){ return chosed_card_list; }
+    public List<Card>              getTableCards()       { return tableCards; }
+    public Map<Integer,Integer>    getPlayerChosenMap()  { return playerChosenMap; }
+    //public Map<Player, Card>        getPlayerChosenCard() { return playerChosenCard; }
+   
     public Card getWinningCard()        { return winningCard; }
 
     public void setWinningCard(Card c)  { this.winningCard = c; }//winning card的setter
@@ -78,8 +84,39 @@ public class GameState {
     /** 重設「本回合暫存」資料（在 Controller endRound() 會呼叫） */
     void clearRoundTemp() {
         dealerChosenCards.clear();
-        chosed_card_list.clear();
-        playerChosenCard.clear();
-        winningCard = null;            
+        Collections.fill(tableCards,null);    // 三格都改回 null
+        playerChosenMap.clear();
+        winningCard = null;;            
+    }
+    public GameState(GameState other) {
+        // 1. 複製玩家
+        this.players = new ArrayList<>();
+        for (Player p : other.players) {
+            Player cp = new Player(p.getName());
+            cp.setPID(p.getPID());
+            if (p.isDealer()) cp.setDealer(true);
+            cp.addScore(p.getScore());
+            // 複製手牌
+            for (Card c : p.getHand()) {
+                cp.draw(c);
+            }
+            this.players.add(cp);
+        }
+        // 2. 複製牌堆與棄牌堆
+        this.deck.clear();
+        this.deck.addAll(other.getDeck());
+        this.trash.clear();
+        this.trash.addAll(other.getTrash());
+        // 3. 複製回合暫存資料
+        this.winningCard = other.getWinningCard();
+        this.dealerChosenCards.clear();
+        this.dealerChosenCards.addAll(other.getDealerChosenCards());
+        this.tableCards.clear();
+        this.tableCards.addAll(other.getTableCards());
+        this.playerChosenMap.clear();
+        this.playerChosenMap.putAll(other.getPlayerChosenMap());
+        // 4. 複製索引與回合勝者
+        this.dealerIndex = other.getDealerIndex();
+        this.roundWinner = other.getRoundWinner();
     }
 }

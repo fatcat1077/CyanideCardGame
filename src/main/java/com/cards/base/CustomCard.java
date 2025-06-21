@@ -15,8 +15,8 @@ public class CustomCard extends Card {
                       Rarity rarity,
                       String imagePath,
                       String captionText) {
-
-        super(cardId, title, description, rarity, imagePath, captionText);
+        // 將字串形式的 cardId 轉成 int，再傳給父類別的建構子
+        super(Integer.parseInt(cardId), title, description, rarity, imagePath, captionText);
     }
 
     @Override

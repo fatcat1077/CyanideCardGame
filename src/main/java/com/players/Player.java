@@ -7,6 +7,7 @@ package com.players;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.io.Serializable;
 import com.cards.base.Card;
 
@@ -20,7 +21,7 @@ public class Player implements Serializable{
     private boolean isReady = false;
 
     /* ------------ 遊戲狀態 ------------ */
-    private final List<Card> hand = new ArrayList<>();
+    private final List<Card> hand = new CopyOnWriteArrayList<>();
     private int score = 0;
     private int actions = 1;    // 每回合可出牌數，Cyanide Card Game 規則預設 1
 
@@ -48,7 +49,7 @@ public class Player implements Serializable{
 
     public Card playRandom(java.util.Random rnd) {
     Card c = hand.remove(rnd.nextInt(hand.size()));
-    String s= c.getCardId();
+    int s= c.getCardId();
     System.out.println(s);
     return c;
     }
