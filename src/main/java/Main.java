@@ -12,6 +12,6 @@ public class Main {
     public static void main(String[] args) {
         // 直接呼叫模擬器
         SwingUtilities.invokeLater(() -> new Frame().setVisible(true));
-        com.game.GameSimulator.main(args);
+        // com.game.GameSimulator.main(args);
     }
 }
