@@ -1,14 +1,18 @@
 package com.gui;
 
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
 import javax.swing.*;
+
+import com.net.Client.Client;
 
 public class Frame extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
     
-    Panel panel;
+    private Client client;
+    private Panel panel;
     
     public Frame() {
         getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -16,8 +20,7 @@ public class Frame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
-        panel = new LobbyPanel(WIDTH, HEIGHT, null);
+        panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
         add(panel);
     }
 
@@ -31,18 +34,22 @@ public class Frame extends JFrame {
     }
 
     public void switchToLobby() {
+        // client = ((RoomPanel) panel).getClient();
+
         remove(panel);
         revalidate();
         repaint();
-
-        panel = new LobbyPanel(WIDTH, HEIGHT, e -> switchToLobby());
+        panel = new LobbyPanel(WIDTH, HEIGHT, /* client, */e -> switchToGame());
         add(panel);
     }
 
     public void switchToGame() {
-        ;
+        // remove(panel);
         revalidate();
         repaint();
+
+        // panel = new GamePanel(WIDTH, HEIGHT, /* client, */e -> switchToEnd());
+        // add(panel);
 
     }
 }

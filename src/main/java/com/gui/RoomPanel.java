@@ -1,7 +1,11 @@
 package com.gui;
 
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
+
+import com.net.Server.Server;
 
 public class RoomPanel extends Panel {
     private JButton createButton;
@@ -52,6 +56,9 @@ public class RoomPanel extends Panel {
                 }
 
                 // 跟Server說要Lobby，並要切換Panel
+                //new Server();
+
+                onSwitch.actionPerformed(null);
             }
         });
 
@@ -62,13 +69,24 @@ public class RoomPanel extends Panel {
                     hintLabel.setText("Enter name!");
                     return;
                 }
-
-                if (!isInviteCode(inviteCodeField.getText())) {
+                
+                String intiveCode = inviteCodeField.getText();
+                if (!isInviteCode(intiveCode)) {
                     hintLabel.setText("Wrong invite code!");
                     return;
                 }
 
-                // 還有一種可能，房號不存在
+                /*
+                try {
+                    // 還有一種可能，房號不存在
+                    // client = new Client(intiveCode);
+                } catch (IOException ex) {
+                    hintLabel.setText("Wrong invite code!");
+                    return;
+                }
+                */
+
+                onSwitch.actionPerformed(null);
             }
         });
     }

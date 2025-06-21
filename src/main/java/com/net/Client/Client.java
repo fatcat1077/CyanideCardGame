@@ -24,7 +24,6 @@ public class Client {
     //private Interface updateListener;
     //private Interface switchListener;
 
-    //handler
     private ClientPacketHandler handler;
 
     Client(String invite_Code, String name) throws IOException, ConnectException{

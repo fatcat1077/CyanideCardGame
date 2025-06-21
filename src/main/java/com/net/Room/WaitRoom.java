@@ -9,7 +9,7 @@ import com.players.Player;
 public class WaitRoom implements Serializable{
     private final List<Player> players = new CopyOnWriteArrayList<>();
     private volatile Player host;
-    private String inviteCode; 
+    private String inviteCode;
 
     public void addPlayer(Player player) {
         players.add(player);
