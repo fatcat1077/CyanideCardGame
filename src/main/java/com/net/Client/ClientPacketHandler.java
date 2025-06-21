@@ -28,6 +28,7 @@ public class ClientPacketHandler implements Runnable{
     //controller
     private MessageController msgController;
     private WaitRoomController waitRoomController;
+    private GameStateController gameStateController;
 
     ClientPacketHandler(Socket socket, Player player) throws IOException{
         this.socket = socket;
@@ -67,8 +68,21 @@ public class ClientPacketHandler implements Runnable{
                             return;
                         case StartGame:
                             //todo
-                            this.switchListener.OnSwitch(); //switch the frame
+                            this.switchListener.OnSwitch(null); //switch the frame
+                            this.gameStateController = new GameStateController(this.out, this.player.getPID());
                             System.out.println("Game Start\n-----------------");
+                            break;
+                        case DealerChoose:
+                            this.gameStateController.handle(revObject);
+                            this.gameStateController.dealerChoose();
+                            break;
+                        case PlayerChoose:
+                            this.gameStateController.handle(revObject);
+                            this.gameStateController.playerChoose();
+                            break;
+                        case DealerRate:
+                            this.gameStateController.handle(revObject);
+                            this.gameStateController.dealerRate();
                             break;
                         default:
                             System.out.println("Unknown packet type: " + revObject.getClass());
@@ -107,12 +121,12 @@ public class ClientPacketHandler implements Runnable{
     //     }
     // }
 
-    // public void setSwitchListener(SwitchListener switchListener){
-    //     this.switchListener = switchListener;
-    //     if(this.waitRoomController != null){
-    //         this.waitRoomController.setSwitchListener(switchListener);
-    //     }
-    // }
+    public void setSwitchListener(SwitchListener switchListener){
+        this.switchListener = switchListener;
+        if(this.waitRoomController != null){
+            this.waitRoomController.setSwitchListener(switchListener);
+        }
+    }
 
     private void init(Object obj) throws IOException{
         Init init = (Init) obj;

@@ -6,12 +6,10 @@ import java.util.List;
 import com.net.protocol.packets.*;
 
 public class MessageController{
-    private ObjectOutputStream out;
     private List<ObjectOutputStream> clients;
 
-    public MessageController(ObjectOutputStream out, List<ObjectOutputStream> clients) throws IOException {
+    public MessageController(List<ObjectOutputStream> clients) throws IOException {
         this.clients = clients;
-        this.out = out;
     }
 
     public void handle(Object obj){

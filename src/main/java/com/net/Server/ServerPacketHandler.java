@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.List;
 
+import com.game.GameState;
 import com.net.Room.WaitRoom;
 import com.net.Server.Controller.*;
 import com.net.Server.interfaces.ServerManager;
@@ -21,6 +22,7 @@ public class ServerPacketHandler implements Runnable{
     // shared info
     private List<ObjectOutputStream> clients;
     private WaitRoom waitRoom;
+    private static GameState gameState;
     
     // individual info
     private Player player;
@@ -31,20 +33,21 @@ public class ServerPacketHandler implements Runnable{
     //Controller
     private MessageController msgController;
     private WaitRoomController waitRoomController;
+    private GameStateController gameStateController;
 
 
 
-
-    ServerPacketHandler(Socket clientSocket, List<ObjectOutputStream> clients, WaitRoom waitRoom, int playerId, ServerManager serverManager) throws IOException{
+    ServerPacketHandler(Socket clientSocket, List<ObjectOutputStream> clients, WaitRoom waitRoom, int playerId, ServerManager serverManager, GameStateController gameStateController) throws IOException{
         this.clientSkt = clientSocket;
         this.clients = clients;
         this.waitRoom = waitRoom;
         this.out = new ObjectOutputStream(clientSocket.getOutputStream());
         this.in = new ObjectInputStream(clientSocket.getInputStream());
-        this.msgController = new MessageController(out, clients);
+        this.msgController = new MessageController(clients);
         this.waitRoomController = new WaitRoomController(this.clients, this.waitRoom);
         this.pid = playerId;
         this.serverManager = serverManager;
+        this.gameStateController = gameStateController;
 
         clients.add(out);
         sendInitPacket();
@@ -67,7 +70,7 @@ public class ServerPacketHandler implements Runnable{
                             msgController.handle(revObject);
                             break;
                         case WaitRoomState:
-                            waitRoomController.handle(revObject);
+                            waitRoomController.handle(revObject, this.pid);
                             break;
                         case Disconnect:
                             handleDisconnect();
@@ -76,6 +79,15 @@ public class ServerPacketHandler implements Runnable{
                             //todo
                             startGame();
                             System.out.println("Start Game");
+                            break;
+                        case DealerChoose:
+                            this.gameStateController.handleDealerChoose(revObject);
+                            break;
+                        case PlayerChoose:
+                            this.gameStateController.handlePlayerChoose(revObject);
+                            break;
+                        case DealerRate:
+                            this.gameStateController.handleDealerRate(revObject);
                             break;
                         default:
                             System.out.println("Unknown packet type");
@@ -101,9 +113,13 @@ public class ServerPacketHandler implements Runnable{
     public void startGame(){
         StartGame startGamePkt = new StartGame();
         broacastPkt(startGamePkt);
-        // todo
-        // new Game()
-        // send GameState packet
+
+        gameState = new GameState(this.waitRoom.getPlayers());
+        this.gameStateController = new GameStateController(clients, gameState);
+        
+        DealerChoose dealerChoosePkt = new DealerChoose(gameState);
+        broacastPkt(dealerChoosePkt);
+
     }
 
     private void sendInitPacket(){

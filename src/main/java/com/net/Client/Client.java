@@ -24,18 +24,7 @@ public class Client {
     private ClientPacketHandler handler;
 
     public Client(String invite_Code, String name) throws IOException, ConnectException{
-        /*
-        this.scanner = new Scanner(System.in);
-        while(true){
-            if(inviteCode.isValidInviteCode(invite_Code)){
-                break;
-            }else{
-                System.out.println("inviteCode error type");
-                System.out.print("Retype inviteCode :");
-                invite_Code = this.scanner.nextLine();
-            }
-        }
-        */
+
         this.socket = new Socket(HOST, PORT);
         this.player = new Player(name);
 
@@ -61,24 +50,19 @@ public class Client {
         return null;
     }
 
+    //need to be set
+    public ClientPacketHandler getClientPacketHandler(){
+        if(this.handler != null){
+            return this.handler;
+        }
+        return null;
+    }
+
     public Player getPlayer() {
         return player;
     }
 
-    // todo
-    // public void setUpdateListener(UpdateListener updateListener){
-    //     this.updateListener = updateListener;
-    //     if(this.handler != null){
-    //         this.handler.setUpdateListener(updateListener);
-    //     }
-    // }
-
-    //  public void setSwitchListener(Interface switchListener){
-    //     this.switchListener = switchListener;
-    //     if(this.handler != null){
-    //         this.handler.setSwitchListener(switchListener);
-    //     }
-    // }
+    
 
     public static void main(String[] args){
         // combine with GUI
