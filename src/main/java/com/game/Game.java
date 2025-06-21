@@ -5,7 +5,7 @@ import java.util.List;
 import com.players.Player;
 
 public class Game {
-    private GameState state;
+    private static GameState state;
     private GameController controller;
 
     //check info
@@ -15,7 +15,7 @@ public class Game {
 
     public Game(List<Player> players){
         this.running = true;
-        this.state = new GameState(players);
-        this.controller = new GameController(this.state);
+        state = new GameState(players);
+        this.controller = new GameController(state);
     }
 }

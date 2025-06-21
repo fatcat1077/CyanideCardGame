@@ -30,6 +30,18 @@ public abstract class Card {
     private final String imagePath;    // e.g., "assets/cards/poop_attack.png"
     private final String captionText;  // e.g., "擲：臭臭彈"
 
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(!(o instanceof Card)) return false;
+        //System.out.println("----");
+        //System.out.println(this.cardId.equals(((Card)o).cardId));
+        return this.cardId.equals(((Card)o).cardId);
+    }
+    @Override
+    public int hashCode(){ return cardId.hashCode(); }
+
     /* ---------- 建構子 ---------- */
     protected Card(String cardId,
                    String title,

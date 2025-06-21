@@ -27,6 +27,10 @@ application {
     mainClass = 'Main'    // 你的主程式類別（若有 Package 請填全名）
 }
 
+tasks.named('simulator') {
+    enabled = false
+}
+
 test {
     useJUnitPlatform()
 }
