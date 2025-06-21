@@ -1,6 +1,8 @@
 package com.gui;
 
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 import com.net.Server.Server;
@@ -68,13 +70,23 @@ public class RoomPanel extends Panel {
                     return;
                 }
                 
-                if (!isInviteCode(inviteCodeField.getText())) {
+                String intiveCode = inviteCodeField.getText();
+                if (!isInviteCode(intiveCode)) {
                     hintLabel.setText("Wrong invite code!");
                     return;
                 }
 
-                client = new Client(,);
-                // 還有一種可能，房號不存在
+                /*
+                try {
+                    // 還有一種可能，房號不存在
+                    // client = new Client(intiveCode);
+                } catch (IOException ex) {
+                    hintLabel.setText("Wrong invite code!");
+                    return;
+                }
+                */
+
+                onSwitch.actionPerformed(null);
             }
         });
     }

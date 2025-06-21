@@ -28,8 +28,9 @@ public class LobbyPanel extends Panel {
     public LobbyPanel(int width, int height, /* Client client, 這裡會傳Client進來 */ActionListener onSwitch) {
         this.onSwitch = onSwitch;
         //this.client = client;
-        // this.wrctrl = ;
+        // this.wrCtrl = // 從Client拿;
         // client.setUpdateListener(waitRoom -> update(waitRoom));
+        // client.setSwitchListener(GAME-STATE -> swutch(GAME-STATE));
 
         setBounds(0, 0, width, height);
         setLayout(null);
@@ -88,7 +89,6 @@ public class LobbyPanel extends Panel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // 告訴Server遊戲開始
-                // 改set成switch
             }
         });
 
@@ -114,33 +114,42 @@ public class LobbyPanel extends Panel {
 
     public void update(WaitRoom waitRoom) {
         /*
-         * // players is gotton from WaitRoom
-         * for (int i = 0; i < playerLabels.length; i++) {
-         *     JLabel playerLabel = playerLabels.get(i);
-         * 
-         *     if (i < players.length) {
-         *         playerLabel.setText(player.getName());
-         *         if (player.getReady()) {
-         *             playerLabel.setBackground(Color.GREEN);
-         *         }
-         *     } else {
-         *         playerLabel.setText("");
-         *         playerLabel.setBackground(null);
-         *     }
-         *     
-         * }
-         * 
-         * // only for host
-         * if (IS-HOST and 人數 == 3 and ALL-PLAYERS-READY) {
-         *     startButton.setEnabled(true);
-         * }
-         */
+        // players is gotton from WaitRoom
+        for (int i = 0; i < playerLabels.length; i++) {
+            JLabel playerLabel = playerLabels.get(i);
+         
+            if (i < players.length) {
+                playerLabel.setText(player.getName());
+                if (player.getReady()) {
+                    playerLabel.setBackground(Color.GREEN);
+                }
+            } else {
+                playerLabel.setText("");
+                playerLabel.setBackground(null);
+            }
+            
+        }
+         
+        // 每次都要判斷display哪個button
+        if (IS-HOST) {
+            startButton.setVisible(true);
+            readyButton.setVisible(false);
+        } else {
+            startButton.setVisible(false);
+            readyButton.setVisible(true);
+        }
+         
+        // only for host
+        if (IS-HOST and 人數 == 3 and ALL-PLAYERS-READY) {
+            startButton.setEnabled(true);
+        }
+        */
         revalidate();
         repaint();
     }
     /*
     private void switch() {
-        onSwitch.actionPerformed();
+        onSwitch.actionPerformed(null);
     }
     */
 }
