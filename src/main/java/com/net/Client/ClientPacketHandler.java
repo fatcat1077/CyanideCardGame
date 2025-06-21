@@ -70,6 +70,13 @@ public class ClientPacketHandler{
         }
     }
 
+    public WaitRoomController getWaitRoomController(){
+        if(this.waitRoomController != null){
+            return this.waitRoomController;
+        }
+        return null;
+    }
+
     private void init(Object obj) throws IOException{
         Init init = (Init) obj;
         this.player.setPID(init.getPID());

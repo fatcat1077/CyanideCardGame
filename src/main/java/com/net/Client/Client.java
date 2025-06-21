@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.*;
 
 import com.net.inviteCode;
+import com.net.Client.Controller.WaitRoomController;
 import com.players.Player;
 
 public class Client {
@@ -38,9 +39,16 @@ public class Client {
         System.out.println(HOST);
         this.socket = new Socket(HOST, PORT);
         this.player = new Player(name);
-        handler = new ClientPacketHandler(socket, player);
+        this.handler = new ClientPacketHandler(socket, player);
 
-        handler.start();
+        this.handler.start();
+    }
+
+    public WaitRoomController getWaitRoomController(){
+        if(this.handler != null){
+            return this.handler.getWaitRoomController();
+        }
+        return null;
     }
 
 
