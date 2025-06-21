@@ -29,7 +29,6 @@ public class WaitRoomController {
         this.player = player;
     }
 
-    //todo
     //setter
     public void setUpdateListener(UpdateListener updateListener){
         this.updateListener = updateListener;
@@ -39,7 +38,9 @@ public class WaitRoomController {
         this.switchListener = switchListener;
     }
 
-
+    public void switchToGame(){
+        this.switchListener.OnSwitch(null);
+    }
 
     public void handle(Object obj){
         WaitRoomState roomState = (WaitRoomState) obj;

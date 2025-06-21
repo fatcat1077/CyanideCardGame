@@ -20,11 +20,6 @@ public class ClientPacketHandler implements Runnable{
     //individual info
     private Player player;
 
-    //todo:
-    //listener
-    // private UpdateListener updateListener;
-    private SwitchListener switchListener;
-
     //controller
     private MessageController msgController;
     private WaitRoomController waitRoomController;
@@ -68,7 +63,7 @@ public class ClientPacketHandler implements Runnable{
                             return;
                         case StartGame:
                             //todo
-                            this.switchListener.OnSwitch(null); //switch the frame
+                            waitRoomController.switchToGame();
                             this.gameStateController = new GameStateController(this.out, this.player.getPID());
                             System.out.println("Game Start\n-----------------");
                             break;
@@ -112,21 +107,6 @@ public class ClientPacketHandler implements Runnable{
         return null;
     }
     
-
-    //setter
-    // public void setUpdateListener(UpdateListener updateListener){
-    //     this.updateListener = updateListener;
-    //     if(this.waitRoomController != null){
-    //         this.waitRoomController.setUpdateListener(updateListener);
-    //     }
-    // }
-
-    public void setSwitchListener(SwitchListener switchListener){
-        this.switchListener = switchListener;
-        if(this.waitRoomController != null){
-            this.waitRoomController.setSwitchListener(switchListener);
-        }
-    }
 
     private void init(Object obj) throws IOException{
         Init init = (Init) obj;

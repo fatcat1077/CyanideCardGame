@@ -50,14 +50,6 @@ public class Client {
         return null;
     }
 
-    //need to be set
-    public ClientPacketHandler getClientPacketHandler(){
-        if(this.handler != null){
-            return this.handler;
-        }
-        return null;
-    }
-
     public Player getPlayer() {
         return player;
     }
