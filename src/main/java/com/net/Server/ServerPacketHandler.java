@@ -72,6 +72,10 @@ public class ServerPacketHandler implements Runnable{
                         case Disconnect:
                             handleDisconnect();
                             return;
+                        case StartGame:
+                            //todo
+                            System.out.println("Start Game");
+
                         default:
                             System.out.println("Unknown packet type");
                             break;

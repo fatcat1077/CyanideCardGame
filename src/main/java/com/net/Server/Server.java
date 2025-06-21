@@ -13,7 +13,7 @@ import com.net.Room.*;
 import com.net.Server.interfaces.ServerManager;
 
 
-public class Server implements ServerManager{
+public class Server implements ServerManager, Runnable{
     //net
     private static int PORT = 8888;
     private static String IP = null;
@@ -23,28 +23,34 @@ public class Server implements ServerManager{
     private static final List<ObjectOutputStream> clients = new CopyOnWriteArrayList<>();
     private static final WaitRoom waitRoom = new WaitRoom();
     private static final List<ServerPacketHandler> handlers = new CopyOnWriteArrayList<>();
+    private String invite_Code;
 
     //variable
+    private final int playerCnt = 3;
     private int cntId = 1;
     private boolean running = false;
 
     
-    Server(){
+    public Server(){
         try{
             running = true;
             IP = InetAddress.getLocalHost().getHostAddress();
             InetAddress addr = InetAddress.getByName(IP);
-            serverSkt = new ServerSocket(PORT, 20, addr);
+            serverSkt = new ServerSocket(PORT, playerCnt, addr);
 
 
             System.out.println("Server IP: " + IP);
-            String invite_Code = inviteCode.encodeInviteCode(IP);
+            this.invite_Code = inviteCode.encodeInviteCode(IP);
             waitRoom.setInviteCode(invite_Code);
             System.out.println("Server Invite Code :" + invite_Code);
 
         }catch(IOException e){
             System.out.println("create server error");
         }
+    }
+
+    @Override
+    public void run(){
         while(running){
             try{
                 Socket clientSkt = serverSkt.accept();
@@ -59,6 +65,10 @@ public class Server implements ServerManager{
                 return;
             }
         }
+    }
+
+    public String getInviteCode(){
+        return this.invite_Code;
     }
 
     public void shutdownServer() {
@@ -77,6 +87,7 @@ public class Server implements ServerManager{
     }
 
     public static void main(String args[]) throws Exception{ 
-        new Server();
+        new Thread(new Server()).start();
+        System.out.println("Test");
     }
 }
