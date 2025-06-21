@@ -3,18 +3,21 @@ package com.net.Client.Controller;
 import java.io.*;
 import java.util.Scanner;
 
+import com.net.protocol.interfaces.UpdateListener;
 import com.net.protocol.packets.Disconnect;
 import com.net.protocol.packets.Message;
 import com.net.protocol.packets.StartGame;
 import com.players.Player;
 
-public class MessageController implements Runnable{
+public class MessageController /*implements Runnable*/{
     private ObjectOutputStream out;
     private Player player;
     private boolean running = false;
 
     //for change host
     WaitRoomController waitRoomController;
+
+    private UpdateListener updateListener;
 
     public MessageController(ObjectOutputStream out, Player player, WaitRoomController waitRoomController) throws IOException {
         this.running = true;
@@ -23,6 +26,11 @@ public class MessageController implements Runnable{
         this.waitRoomController = waitRoomController;
     }
 
+    public void setUpdateListener(UpdateListener updateListener){
+        this.updateListener = updateListener;
+    }
+
+    /*
     public void run(){
         Scanner scanner = new Scanner(System.in);
         while (running) {
@@ -57,11 +65,21 @@ public class MessageController implements Runnable{
         }
         scanner.close();
     }
+    */
+
+    public void send(String text) {
+        String name = player.getName();
+
+        Message msgPkt = new Message(name, text);
+        sendPacket(msgPkt);
+        System.out.println("send to server");
+    }
 
     public void handle(Object obj){
         // output the message
         Message msg = (Message) obj;
-        System.out.println(msg.getSender() + ": " + msg.getContent());        
+        //System.out.println(msg.getSender() + ": " + msg.getContent());
+        updateListener.OnUpdate(msg);
     }
 
     public void stop(){
