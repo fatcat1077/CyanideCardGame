@@ -23,7 +23,6 @@ public class LobbyPanel extends Panel {
     private Client client;
     private WaitRoomController wrCtrl;
 
-    private boolean variableForTestIsHost;
     private boolean variableForTestIsReady = false;
 
     public LobbyPanel(int width, int height, Client client, ActionListener onSwitch) {
