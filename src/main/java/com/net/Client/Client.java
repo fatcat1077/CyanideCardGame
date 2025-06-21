@@ -18,6 +18,11 @@ public class Client {
 
     //info
     private Player player;
+    
+    //todo :
+    //listener
+    //private Interface updateListener;
+    //private Interface switchListener;
 
     //handler
     private ClientPacketHandler handler;
@@ -51,6 +56,20 @@ public class Client {
         return null;
     }
 
+    // todo
+    // public void setUpdateListener(Interface updateListener){
+    //     this.updateListener = updateListener;
+    //     if(this.handler != null){
+    //         this.handler.setUpdateListener(updateListener);
+    //     }
+    // }
+
+    //  public void setSwitchListener(Interface switchListener){
+    //     this.switchListener = switchListener;
+    //     if(this.handler != null){
+    //         this.handler.setSwitchListener(switchListener);
+    //     }
+    // }
 
     public static void main(String[] args){
         // combine with GUI

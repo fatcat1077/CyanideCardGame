@@ -18,6 +18,11 @@ public class ClientPacketHandler{
     //individual info
     private Player player;
 
+    //todo:
+    //listener
+    //private Interface updateListener;
+    //private Interface switchListener;
+
     //controller
     private MessageController msgController;
     private WaitRoomController waitRoomController;
@@ -70,12 +75,28 @@ public class ClientPacketHandler{
         }
     }
 
+    // getter
     public WaitRoomController getWaitRoomController(){
         if(this.waitRoomController != null){
             return this.waitRoomController;
         }
         return null;
     }
+
+    //setter
+    // public void setUpdateListener(Interface updateListener){
+    //     this.updateListener = updateListener;
+    //     if(this.waitRoomController != null){
+    //         this.waitRoomController.setUpdateListener(updateListener);
+    //     }
+    // }
+
+    //  public void setSwitchListener(Interface switchListener){
+    //     this.switchListener = switchListener;
+    //     if(this.waitRoomController != null){
+    //         this.waitRoomController.setSwitchListener(switchListener);
+    //     }
+    // }
 
     private void init(Object obj) throws IOException{
         Init init = (Init) obj;

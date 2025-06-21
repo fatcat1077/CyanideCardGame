@@ -16,11 +16,27 @@ public class WaitRoomController {
     private Player host;
     private int pid;
 
+    //listener
+    //private Interface updateListener;
+    //private Interface switchListener;
+
     public WaitRoomController(int pid, ObjectOutputStream out, Player player){
         this.pid = pid;
         this.out = out;
         this.player = player;
     }
+
+    //todo
+    //setter
+    // public void setUpdateListener(Interface updateListener){
+    //     this.updateListener = updateListener;
+    // }
+
+    //  public void setSwitchListener(Interface switchListener){
+    //     this.switchListener = switchListener;
+    // }
+
+
 
     public void handle(Object obj){
         WaitRoomState roomState = (WaitRoomState) obj;
