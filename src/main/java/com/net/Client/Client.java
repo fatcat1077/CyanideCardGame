@@ -28,9 +28,11 @@ public class Client {
             this.scanner = new Scanner(System.in);
             
             System.out.print("enter your name :");
+
             this.player = new Player(this.scanner.nextLine());
 
             handler = new ClientPacketHandler(socket, player);
+
             handler.start();
 
 
