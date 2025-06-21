@@ -21,25 +21,26 @@ public class Client {
     //handler
     private ClientPacketHandler handler;
 
-    Client(String host, int port){
-        try {
-            System.out.println(host);
-            this.socket = new Socket(host, port);
-            this.scanner = new Scanner(System.in);
-            
-            System.out.print("enter your name :");
-
-            this.player = new Player(this.scanner.nextLine());
-
-            handler = new ClientPacketHandler(socket, player);
-
-            handler.start();
-
-
-        }catch(IOException e){
-            System.out.println("server connect error");
-            e.printStackTrace();
+    Client(String invite_Code, String name) throws IOException, ConnectException{
+        this.scanner = new Scanner(System.in);
+        while(true){
+            if(inviteCode.isValidInviteCode(invite_Code)){
+                break;
+            }else{
+                System.out.println("inviteCode error type");
+                System.out.print("Retype inviteCode :");
+                invite_Code = this.scanner.nextLine();
+            }
         }
+
+        HOST = inviteCode.decodeInviteCode(invite_Code);
+
+        System.out.println(HOST);
+        this.socket = new Socket(HOST, PORT);
+        this.player = new Player(name);
+        handler = new ClientPacketHandler(socket, player);
+
+        handler.start();
     }
 
 
@@ -47,8 +48,17 @@ public class Client {
         // combine with GUI
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter invite code :");
-        HOST = inviteCode.decodeInviteCode(scanner.nextLine());
-        new Client(HOST, PORT);
+        String invite_Code = scanner.nextLine();
+        System.out.print("enter your name :");
+        String name = scanner.nextLine();
+
+        try{
+            new Client(invite_Code, name);
+        }catch (IOException e){
+            System.out.println("---------------\nclient connect error");
+            e.printStackTrace();
+        }
+        
     }
 
 }
