@@ -118,10 +118,7 @@ public class GameController {
         // 執行移除
         boolean ok = player.getHand().removeIf(c -> c.getCardId() == cardId);
 
-        //這是getter用於回傳gamestate
-        public GameState getServerState() {
-            return serverState;
-        }
+        
 
         // 若移除失敗，再拋出例外
         if (!ok) {
@@ -129,7 +126,11 @@ public class GameController {
                 player.getName() + " missing Card " + cardId);
         }
     }
-
+    
+    //這是getter用於回傳gamestate
+    public GameState getServerState() {
+        return serverState;
+    }
 
     /* CLI 顯示（測試用） */
     public Player pickRandomPlayer(List<Player> cs){ return cs.get(rnd.nextInt(cs.size())); }
