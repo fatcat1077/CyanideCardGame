@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import com.net.Client.Client;
 import com.net.Server.Server;
 
 public class RoomPanel extends Panel {
@@ -14,6 +15,8 @@ public class RoomPanel extends Panel {
     private JTextField inviteCodeField;
     private JLabel hintLabel;
     private ActionListener onSwitch;
+
+    private Client client;
 
     public RoomPanel(int width, int height, ActionListener onSwitch) {
         this.onSwitch = onSwitch;
@@ -50,13 +53,21 @@ public class RoomPanel extends Panel {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nameField.getText().equals("")) {
+                String name = nameField.getText();
+                if (name.equals("")) {
                     hintLabel.setText("Enter name!");
                     return;
                 }
 
                 // 跟Server說要Lobby，並要切換Panel
-                //new Server();
+                String inviteCode = new Server().getInviteCode(); // new Server
+                try {
+                    System.out.println("before new Client");
+                    client = new Client(inviteCode, name);
+                    System.out.println("after new Client");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
 
                 onSwitch.actionPerformed(null);
             }
@@ -65,16 +76,13 @@ public class RoomPanel extends Panel {
         joinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (nameField.getText().equals("")) {
+                String name = nameField.getText();
+                if (name.equals("")) {
                     hintLabel.setText("Enter name!");
                     return;
                 }
                 
                 String intiveCode = inviteCodeField.getText();
-                if (!isInviteCode(intiveCode)) {
-                    hintLabel.setText("Wrong invite code!");
-                    return;
-                }
 
                 /*
                 try {
@@ -91,12 +99,7 @@ public class RoomPanel extends Panel {
         });
     }
 
-    private boolean isInviteCode(String text) { // only accept pure number, can't be empty
-        if (text.isEmpty()) return false;
-
-        for (char c : text.toCharArray()) {
-            if (!Character.isDigit(c)) return false;
-        }
-        return true;
+    public Client getGeneratedClient() {
+        return client;
     }
 }

@@ -34,12 +34,12 @@ public class Frame extends JFrame {
     }
 
     public void switchToLobby() {
-        // client = ((RoomPanel) panel).getClient();
+        client = ((RoomPanel) panel).getGeneratedClient();
 
         remove(panel);
         revalidate();
         repaint();
-        panel = new LobbyPanel(WIDTH, HEIGHT, /* client, */e -> switchToGame());
+        panel = new LobbyPanel(WIDTH, HEIGHT, client, e -> switchToGame());
         add(panel);
     }
 

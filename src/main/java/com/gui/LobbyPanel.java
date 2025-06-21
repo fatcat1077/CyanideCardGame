@@ -25,10 +25,10 @@ public class LobbyPanel extends Panel {
     private boolean variableForTestIsHost;
     private boolean variableForTestIsReady = false;
 
-    public LobbyPanel(int width, int height, /* Client client, 這裡會傳Client進來 */ActionListener onSwitch) {
+    public LobbyPanel(int width, int height, Client client, ActionListener onSwitch) {
         this.onSwitch = onSwitch;
-        //this.client = client;
-        // this.wrCtrl = // 從Client拿;
+        this.client = client;
+        this.wrCtrl = client.getWaitRoomController();
         // client.setUpdateListener(waitRoom -> update(waitRoom));
         // client.setSwitchListener(GAME-STATE -> swutch(GAME-STATE));
 
