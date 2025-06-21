@@ -62,6 +62,11 @@ public class ClientPacketHandler{
                         case HostDisconnect:
                             System.out.println("Host is disconnected.");
                             return;
+                        case StartGame:
+                            //todo
+                            //this.switchListener.update(); //switch the frame
+                            System.out.println("Game Start\n-----------------");
+                            break;
                         default:
                             System.out.println("Unknown packet type: " + revObject.getClass());
                             break;

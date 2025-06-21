@@ -74,8 +74,9 @@ public class ServerPacketHandler implements Runnable{
                             return;
                         case StartGame:
                             //todo
+                            startGame();
                             System.out.println("Start Game");
-
+                            break;
                         default:
                             System.out.println("Unknown packet type");
                             break;
@@ -95,6 +96,14 @@ public class ServerPacketHandler implements Runnable{
         }catch(IOException e){
             System.out.println(String.format("Closing %s (%d) socket error", player.getName(), player.getPID()));
         }
+    }
+
+    public void startGame(){
+        StartGame startGamePkt = new StartGame();
+        broacastPkt(startGamePkt);
+        // todo
+        // new Game()
+        // send GameState packet
     }
 
     private void sendInitPacket(){

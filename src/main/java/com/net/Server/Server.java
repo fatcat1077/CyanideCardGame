@@ -88,6 +88,5 @@ public class Server implements ServerManager, Runnable{
 
     public static void main(String args[]) throws Exception{ 
         new Thread(new Server()).start();
-        System.out.println("Test");
     }
 }

@@ -42,12 +42,7 @@ public class MessageController implements Runnable{
                 waitRoomController.ready();
                 continue;
             }else if (input.equals("start")){
-                if(waitRoomController.startGame()){
-                    StartGame startGamePkt = new StartGame();
-                    sendPacket(startGamePkt);
-
-                    System.out.println("Game Start !!!!! \n");
-                }
+                waitRoomController.startGame();
                 continue;
 
             }
