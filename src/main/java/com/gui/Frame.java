@@ -1,5 +1,7 @@
 package com.gui;
 
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 import com.net.Client.Client;
@@ -12,11 +14,12 @@ public class Frame extends JFrame {
     Client client;
     
     public Frame() {
-        setSize(WIDTH, HEIGHT);
+        getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        pack();
         setLocationRelativeTo(null);
 
-        panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
-        //panel = new GamePanel(WIDTH, HEIGHT, null);
+        // panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        panel = new GamePanel(WIDTH, HEIGHT, null);
 
         add(panel);
     }
