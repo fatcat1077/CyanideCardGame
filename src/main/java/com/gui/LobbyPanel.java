@@ -78,7 +78,7 @@ public class LobbyPanel extends Panel {
         //     readyButton.setVisible(true);
         // }
 
-        chatPanel = new ChatPanel();
+        chatPanel = new ChatPanel(client);
         chatPanel.setBounds(0, 300, 300, 300);
         add(chatPanel);
 

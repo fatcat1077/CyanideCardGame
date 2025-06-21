@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.*;
 
 import com.net.inviteCode;
-import com.net.Client.Controller.WaitRoomController;
+import com.net.Client.Controller.*;
 import com.players.Player;
 import com.net.protocol.interfaces.*;
 
@@ -61,6 +61,13 @@ public class Client {
     public WaitRoomController getWaitRoomController(){
         if(this.handler != null){
             return this.handler.getWaitRoomController();
+        }
+        return null;
+    }
+
+    public MessageController getMessageController(){
+        if(this.handler != null){
+            return this.handler.getMessageController();
         }
         return null;
     }

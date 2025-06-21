@@ -94,6 +94,14 @@ public class ClientPacketHandler implements Runnable{
         return null;
     }
 
+    public MessageController getMessageController(){
+        if(this.msgController != null){
+            return this.msgController;
+        }
+        return null;
+    }
+    
+
     //setter
     // public void setUpdateListener(UpdateListener updateListener){
     //     this.updateListener = updateListener;
@@ -124,7 +132,7 @@ public class ClientPacketHandler implements Runnable{
         // open chat
         this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
 
-        new Thread(this.msgController).start();
+        //new Thread(this.msgController).start();
     }
 
     private void disconnect(){
