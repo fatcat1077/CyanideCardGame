@@ -113,7 +113,8 @@ public class LobbyPanel extends Panel {
         });
     }
 
-    public void update(WaitRoom waitRoom) {
+    public void update(Object state) {
+        WaitRoom waitRoom = (WaitRoom) state;
 
         String inviteCode = waitRoom.getInviteCode();
         inviteCodeLabel.setText(inviteCode);
@@ -137,7 +138,11 @@ public class LobbyPanel extends Panel {
             
         }
 
-        boolean isHost = (players.get(0).getName().equals(client.getPlayer().getName()));
+        for (int i = 0; i < players.size(); i++) {
+            System.out.println(players.get(i).getPID());
+        }
+
+        boolean isHost = (waitRoom.getHost().getPID() == client.getPlayer().getPID());
         
         if (isHost) {
             startButton.setVisible(true);

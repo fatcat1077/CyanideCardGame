@@ -94,7 +94,7 @@ public class WaitRoomController {
         }
         System.out.println("update");
         this.updateListener.OnUpdate(waitRoom); //update the waitroom
-        /*
+        
         System.out.println(String.format("Now RoomState (invite code = %s): ", waitRoom.getInviteCode()));
         System.out.println("Players: ");
         for(Player player : this.room.getPlayers()){
@@ -102,7 +102,7 @@ public class WaitRoomController {
         }
         System.out.println(String.format("Room Host: %s (%d)", host.getName(), host.getPID()));
         System.out.println("----------------------");
-        */
+        
     }
 
     private void sendPacket(Object packet){

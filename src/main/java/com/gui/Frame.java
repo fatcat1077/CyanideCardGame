@@ -20,7 +20,8 @@ public class Frame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        //panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        panel = new GamePanel(WIDTH, HEIGHT, null);
         add(panel);
     }
 
