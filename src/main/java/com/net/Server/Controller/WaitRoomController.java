@@ -42,10 +42,24 @@ public class WaitRoomController {
 
     private void updateWaitRoom(WaitRoom newWaitRoom, int pid){
         this.waitRoom.setHost(newWaitRoom.getHost());
-        for(Player player : this.waitRoom.getPlayers()){
+        
+        Player newPlayer = null;
+        for(Player player : newWaitRoom.getPlayers()){
             if(player.getPID() == pid){
-                this.waitRoom.setReady(player);
+                newPlayer = player;
+                break;
             }
         }
+        if(newPlayer != null){
+            for(Player oldPlayer : this.waitRoom.getPlayers()){
+                if(oldPlayer.getPID() == pid){
+                    if(oldPlayer.getReady() != newPlayer.getReady()){
+                        this.waitRoom.setReady(oldPlayer);
+                        break;
+                    }
+                }
+            }
+        }
+         
     }
 }

@@ -23,7 +23,7 @@ public class ClientPacketHandler implements Runnable{
     //todo:
     //listener
     // private UpdateListener updateListener;
-    // private SwitchListener switchListener;
+    private SwitchListener switchListener;
 
     //controller
     private MessageController msgController;
@@ -67,7 +67,7 @@ public class ClientPacketHandler implements Runnable{
                             return;
                         case StartGame:
                             //todo
-                            //this.switchListener.update(); //switch the frame
+                            this.switchListener.OnSwitch(); //switch the frame
                             System.out.println("Game Start\n-----------------");
                             break;
                         default:
