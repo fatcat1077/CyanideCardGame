@@ -118,6 +118,11 @@ public class GameController {
         // 執行移除
         boolean ok = player.getHand().removeIf(c -> c.getCardId() == cardId);
 
+        //這是getter用於回傳gamestate
+        public GameState getServerState() {
+            return serverState;
+        }
+
         // 若移除失敗，再拋出例外
         if (!ok) {
             throw new IllegalStateException(
