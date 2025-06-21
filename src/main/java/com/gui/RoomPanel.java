@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import com.net.Client.Client;
 import com.net.Server.Server;
+import com.net.inviteCode;
 
 public class RoomPanel extends Panel {
     private JButton createButton;
@@ -60,7 +61,10 @@ public class RoomPanel extends Panel {
                 }
 
                 // 跟Server說要Lobby，並要切換Panel
-                String inviteCode = new Server().getInviteCode(); // new Server
+                Server server = new Server();
+                String inviteCode = server.getInviteCode(); // new Server
+                new Thread(server).start();
+
                 try {
                     System.out.println("before new Client");
                     client = new Client(inviteCode, name);
@@ -82,17 +86,20 @@ public class RoomPanel extends Panel {
                     return;
                 }
                 
-                String intiveCode = inviteCodeField.getText();
-
-                /*
+                String intiveCodeStr = inviteCodeField.getText();
+                if (!inviteCode.isValidInviteCode(intiveCodeStr)) {
+                    hintLabel.setText("Wrong invite code!");
+                    return;
+                }
+                
                 try {
                     // 還有一種可能，房號不存在
-                    // client = new Client(intiveCode);
+                    client = new Client(intiveCodeStr, name);
                 } catch (IOException ex) {
                     hintLabel.setText("Wrong invite code!");
                     return;
                 }
-                */
+                
 
                 onSwitch.actionPerformed(null);
             }

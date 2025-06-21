@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.net.Room.WaitRoom;
+import com.players.Player;
 import com.net.Client.Client;
 import com.net.Client.Controller.WaitRoomController;
 
@@ -22,15 +23,14 @@ public class LobbyPanel extends Panel {
     private Client client;
     private WaitRoomController wrCtrl;
 
-    private boolean variableForTestIsHost;
     private boolean variableForTestIsReady = false;
 
     public LobbyPanel(int width, int height, Client client, ActionListener onSwitch) {
         this.onSwitch = onSwitch;
         this.client = client;
         this.wrCtrl = client.getWaitRoomController();
-        // client.setUpdateListener(waitRoom -> update(waitRoom));
-        // client.setSwitchListener(GAME-STATE -> swutch(GAME-STATE));
+        wrCtrl.setUpdateListener(waitRoom -> update(waitRoom));
+        //wrCtrl.setSwitchListener(GAME-STATE -> _switch(GAME-STATE));
 
         setBounds(0, 0, width, height);
         setLayout(null);
@@ -46,6 +46,7 @@ public class LobbyPanel extends Panel {
             JLabel playerLabel = new JLabel();
             playerLabel.setBounds(0, 100 + 50 * i, 100, 50);
             playerLabel.setText("player" + i);
+            playerLabel.setOpaque(true);
             add(playerLabel);
             playerLabels.add(playerLabel);
         }
@@ -54,7 +55,7 @@ public class LobbyPanel extends Panel {
         // 否則(只是房客)display readyButton
 
         // 先設一個變數當作暫時測試
-        variableForTestIsHost = true;
+        //variableForTestIsHost = true;
 
         // start button
         startButton = new JButton();
@@ -69,13 +70,13 @@ public class LobbyPanel extends Panel {
         readyButton.setText("Ready");
         add(readyButton);
 
-        if (variableForTestIsHost) {
-            startButton.setVisible(true);
-            readyButton.setVisible(false);
-        } else {
-            startButton.setVisible(false);
-            readyButton.setVisible(true);
-        }
+        // if (variableForTestIsHost) {
+        //     startButton.setVisible(true);
+        //     readyButton.setVisible(false);
+        // } else {
+        //     startButton.setVisible(false);
+        //     readyButton.setVisible(true);
+        // }
 
         chatPanel = new ChatPanel();
         chatPanel.setBounds(0, 300, 300, 300);
@@ -88,7 +89,7 @@ public class LobbyPanel extends Panel {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // 告訴Server遊戲開始
+                wrCtrl.startGame();
             }
         });
 
@@ -100,28 +101,35 @@ public class LobbyPanel extends Panel {
                     readyButton.setText("Cancel");
                     readyButton.setBackground(Color.GREEN);
 
-                    // wrCtrl.ready();
+                    wrCtrl.ready();
                 } else {
                     variableForTestIsReady = false;
                     readyButton.setText("Ready");
                     readyButton.setBackground(null);
 
-                    // wrCtrl.ready();
+                    wrCtrl.ready();
                 }
             }
         });
     }
 
-    public void update(WaitRoom waitRoom) {
-        /*
-        // players is gotton from WaitRoom
-        for (int i = 0; i < playerLabels.length; i++) {
+    public void update(Object state) {
+        WaitRoom waitRoom = (WaitRoom) state;
+
+        String inviteCode = waitRoom.getInviteCode();
+        inviteCodeLabel.setText(inviteCode);
+        
+        List<Player> players = waitRoom.getPlayers();
+        for (int i = 0; i < playerLabels.size(); i++) {
             JLabel playerLabel = playerLabels.get(i);
          
-            if (i < players.length) {
+            if (i < players.size()) {
+                Player player = players.get(i);
                 playerLabel.setText(player.getName());
                 if (player.getReady()) {
                     playerLabel.setBackground(Color.GREEN);
+                } else {
+                    playerLabel.setBackground(null);
                 }
             } else {
                 playerLabel.setText("");
@@ -129,26 +137,40 @@ public class LobbyPanel extends Panel {
             }
             
         }
-         
-        // 每次都要判斷display哪個button
-        if (IS-HOST) {
+
+        for (int i = 0; i < players.size(); i++) {
+            System.out.println(players.get(i).getPID());
+        }
+
+        boolean isHost = (waitRoom.getHost().getPID() == client.getPlayer().getPID());
+        
+        if (isHost) {
             startButton.setVisible(true);
             readyButton.setVisible(false);
         } else {
             startButton.setVisible(false);
             readyButton.setVisible(true);
         }
-         
-        // only for host
-        if (IS-HOST and 人數 == 3 and ALL-PLAYERS-READY) {
+
+        boolean allPlayersReady = true;
+        for (int i = 0; i < players.size(); i++) {
+            Player player = players.get(i);
+            if (player.getName().equals(client.getPlayer().getName())) continue;
+            if (!player.getReady()) {
+                allPlayersReady = false;
+                break;
+            }
+        }
+        
+        if (isHost && players.size() == 3 && allPlayersReady) {
             startButton.setEnabled(true);
         }
-        */
+        
         revalidate();
         repaint();
     }
     /*
-    private void switch() {
+    private void _switch() {
         onSwitch.actionPerformed(null);
     }
     */

@@ -7,9 +7,11 @@ import java.net.Socket;
 
 import com.net.Client.Controller.*;
 import com.net.protocol.enums.PacketType;
+import com.net.protocol.interfaces.*;
 import com.net.protocol.packets.*;
 import com.players.Player;
-public class ClientPacketHandler{
+
+public class ClientPacketHandler implements Runnable{
     //net
     private Socket socket;
     private ObjectOutputStream out;
@@ -20,8 +22,8 @@ public class ClientPacketHandler{
 
     //todo:
     //listener
-    //private Interface updateListener;
-    //private Interface switchListener;
+    // private UpdateListener updateListener;
+    // private SwitchListener switchListener;
 
     //controller
     private MessageController msgController;
@@ -30,11 +32,15 @@ public class ClientPacketHandler{
     ClientPacketHandler(Socket socket, Player player) throws IOException{
         this.socket = socket;
         this.player = player;
+        System.out.println("a1");
         this.out = new ObjectOutputStream(this.socket.getOutputStream());
+        System.out.println("a2");
         this.in = new ObjectInputStream(this.socket.getInputStream());
+        System.out.println("a3");
     }
 
-    public void start(){
+    @Override
+    public void run(){
         try {
             // // when client disconnect (program finished), send a Disconnect packet 
             // Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -74,7 +80,7 @@ public class ClientPacketHandler{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Disconnected from server.");
+            System.out.println(player.getName() + "Disconnected from server.");
         } finally {
             disconnect();
         }
@@ -89,14 +95,14 @@ public class ClientPacketHandler{
     }
 
     //setter
-    // public void setUpdateListener(Interface updateListener){
+    // public void setUpdateListener(UpdateListener updateListener){
     //     this.updateListener = updateListener;
     //     if(this.waitRoomController != null){
     //         this.waitRoomController.setUpdateListener(updateListener);
     //     }
     // }
 
-    //  public void setSwitchListener(Interface switchListener){
+    // public void setSwitchListener(SwitchListener switchListener){
     //     this.switchListener = switchListener;
     //     if(this.waitRoomController != null){
     //         this.waitRoomController.setSwitchListener(switchListener);

@@ -17,7 +17,11 @@ public class GamePanel extends Panel {
         setBounds(0, 0, width, height);
         setLayout(null);
         
-        ;
+        for (int i = 0; i < 5; i++) {
+            Card c = new Card();
+            c.setLocation(500 - 100 * i, 400);
+            add(c, i);
+        }
 
         setAction();
     }
