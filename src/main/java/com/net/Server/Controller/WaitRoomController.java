@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.net.Room.WaitRoom;
 import com.net.protocol.packets.WaitRoomState;
+import com.players.Player;
 
 public class WaitRoomController {
     private List<ObjectOutputStream> clients;
@@ -33,13 +34,18 @@ public class WaitRoomController {
     }
 
     //recieve
-    public void handle(Object obj){
+    public void handle(Object obj, int pid){
         WaitRoomState newState = (WaitRoomState) obj;
-        updateWaitRoom(newState.getWaitRoom());
+        updateWaitRoom(newState.getWaitRoom(), pid);
         updateToAll(newState);
     }
 
-    private void updateWaitRoom(WaitRoom newWaitRoom){
+    private void updateWaitRoom(WaitRoom newWaitRoom, int pid){
         this.waitRoom.setHost(newWaitRoom.getHost());
+        for(Player player : this.waitRoom.getPlayers()){
+            if(player.getPID() == pid){
+                this.waitRoom.setReady(player);
+            }
+        }
     }
 }
