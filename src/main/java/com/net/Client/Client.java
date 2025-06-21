@@ -4,8 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import com.net.inviteCode;
-import com.net.Client.Controller.WaitRoomController;
+import com.net.Client.Controller.*;
 import com.players.Player;
 
 public class Client {
@@ -14,20 +13,18 @@ public class Client {
     private static final int PORT = 8888;
     private Socket socket;
 
-    private Scanner scanner;
-
     //info
     private Player player;
     
     //todo :
     //listener
-    //private Interface updateListener;
-    //private Interface switchListener;
+    // private UpdateListener updateListener;
+    // private SwitchListener switchListener;
 
-    //handler
     private ClientPacketHandler handler;
 
-    Client(String invite_Code, String name) throws IOException, ConnectException{
+    public Client(String invite_Code, String name) throws IOException, ConnectException{
+        /*
         this.scanner = new Scanner(System.in);
         while(true){
             if(inviteCode.isValidInviteCode(invite_Code)){
@@ -38,15 +35,16 @@ public class Client {
                 invite_Code = this.scanner.nextLine();
             }
         }
-
-        HOST = inviteCode.decodeInviteCode(invite_Code);
-
-        System.out.println(HOST);
+        */
         this.socket = new Socket(HOST, PORT);
         this.player = new Player(name);
+
         this.handler = new ClientPacketHandler(socket, player);
 
-        this.handler.start();
+
+        //this.handler.start();
+        new Thread(handler).start();
+
     }
 
     public WaitRoomController getWaitRoomController(){
@@ -56,8 +54,19 @@ public class Client {
         return null;
     }
 
+    public MessageController getMessageController(){
+        if(this.handler != null){
+            return this.handler.getMessageController();
+        }
+        return null;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     // todo
-    // public void setUpdateListener(Interface updateListener){
+    // public void setUpdateListener(UpdateListener updateListener){
     //     this.updateListener = updateListener;
     //     if(this.handler != null){
     //         this.handler.setUpdateListener(updateListener);
@@ -85,7 +94,7 @@ public class Client {
             System.out.println("---------------\nclient connect error");
             e.printStackTrace();
         }
-        
+        scanner.close();
     }
 
 }

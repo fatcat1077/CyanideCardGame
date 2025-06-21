@@ -7,9 +7,11 @@ import java.net.Socket;
 
 import com.net.Client.Controller.*;
 import com.net.protocol.enums.PacketType;
+import com.net.protocol.interfaces.*;
 import com.net.protocol.packets.*;
 import com.players.Player;
-public class ClientPacketHandler{
+
+public class ClientPacketHandler implements Runnable{
     //net
     private Socket socket;
     private ObjectOutputStream out;
@@ -20,8 +22,8 @@ public class ClientPacketHandler{
 
     //todo:
     //listener
-    //private Interface updateListener;
-    //private Interface switchListener;
+    // private UpdateListener updateListener;
+    // private SwitchListener switchListener;
 
     //controller
     private MessageController msgController;
@@ -34,7 +36,8 @@ public class ClientPacketHandler{
         this.in = new ObjectInputStream(this.socket.getInputStream());
     }
 
-    public void start(){
+    @Override
+    public void run(){
         try {
             // // when client disconnect (program finished), send a Disconnect packet 
             // Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -74,7 +77,7 @@ public class ClientPacketHandler{
                 }
             }
         } catch (Exception e) {
-            System.out.println("Disconnected from server.");
+            System.out.println(player.getName() + "Disconnected from server.");
         } finally {
             disconnect();
         }
@@ -88,15 +91,23 @@ public class ClientPacketHandler{
         return null;
     }
 
+    public MessageController getMessageController(){
+        if(this.msgController != null){
+            return this.msgController;
+        }
+        return null;
+    }
+    
+
     //setter
-    // public void setUpdateListener(Interface updateListener){
+    // public void setUpdateListener(UpdateListener updateListener){
     //     this.updateListener = updateListener;
     //     if(this.waitRoomController != null){
     //         this.waitRoomController.setUpdateListener(updateListener);
     //     }
     // }
 
-    //  public void setSwitchListener(Interface switchListener){
+    // public void setSwitchListener(SwitchListener switchListener){
     //     this.switchListener = switchListener;
     //     if(this.waitRoomController != null){
     //         this.waitRoomController.setSwitchListener(switchListener);
@@ -116,9 +127,9 @@ public class ClientPacketHandler{
         this.waitRoomController = new WaitRoomController(player.getPID(), out, this.player);
 
         // open chat
-        this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
+        this.msgController = new MessageController(this.out, this.player);
 
-        new Thread(this.msgController).start();
+        //new Thread(this.msgController).start();
     }
 
     private void disconnect(){

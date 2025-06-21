@@ -20,12 +20,12 @@ public class MessageController{
 
     private void broadcastMsg(Object obj) {
         Message msg = (Message) obj;
-        System.out.println(msg.getSender() + ": " + msg.getContent());
+        System.out.println("[At Server] " + msg.getSender() + ": " + msg.getContent());
         
         synchronized (clients) {
             for (ObjectOutputStream clientOut : clients) {
                 try {
-                    if(clientOut == this.out) continue;
+                    //if(clientOut == this.out) continue;
                     clientOut.writeObject(msg);
                     clientOut.flush();
                 } catch (IOException e) {

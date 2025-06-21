@@ -22,8 +22,8 @@ import com.cards.enums.Rarity;
 public abstract class Card {
 
     /* ---------- 常駐資料欄位 ---------- */
-    private final UUID   instanceUuid = UUID.randomUUID(); // 每張實體唯一
-    private final String cardId;       // 對應 JSON 的 id (e.g., "c001")
+    private final UUID   instanceUuid = UUID.randomUUID(); // 這個要問問瑞倫圖要不要修
+    private final int   cardId;      // 對應 JSON 的 id (e.g., "c001")
     private final String title;
     private final String description;
     private final Rarity rarity;
@@ -31,7 +31,7 @@ public abstract class Card {
     private final String captionText;  // e.g., "擲：臭臭彈"
 
     /* ---------- 建構子 ---------- */
-    protected Card(String cardId,
+    protected Card(int cardId,
                    String title,
                    String description,
                    Rarity rarity,
@@ -45,10 +45,16 @@ public abstract class Card {
         this.imagePath   = imagePath;
         this.captionText = captionText;
     }
+    @Override public boolean equals(Object o){
+        return this == o ||
+               (o instanceof Card c && this.cardId == c.cardId);
+    }
+    @Override public int hashCode(){ return Integer.hashCode(cardId); }
+    
 
     /* ---------- Getter ---------- */
     public UUID   getInstanceUuid() { return instanceUuid; }
-    public String getCardId()       { return cardId;       }
+    public int getCardId()       { return cardId;       }
     public String getTitle()        { return title;        }
     public String getDescription()  { return description;  }
     public Rarity getRarity()       { return rarity;       }
