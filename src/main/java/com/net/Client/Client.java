@@ -4,18 +4,14 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import com.net.inviteCode;
 import com.net.Client.Controller.*;
 import com.players.Player;
-import com.net.protocol.interfaces.*;
 
 public class Client {
     //net
     private static String HOST;
     private static final int PORT = 8888;
     private Socket socket;
-
-    private Scanner scanner;
 
     //info
     private Player player;
@@ -28,34 +24,16 @@ public class Client {
     private ClientPacketHandler handler;
 
     public Client(String invite_Code, String name) throws IOException, ConnectException{
-        /*
-        this.scanner = new Scanner(System.in);
-        while(true){
-            if(inviteCode.isValidInviteCode(invite_Code)){
-                break;
-            }else{
-                System.out.println("inviteCode error type");
-                System.out.print("Retype inviteCode :");
-                invite_Code = this.scanner.nextLine();
-            }
-        }
-        */
 
-        HOST = inviteCode.decodeInviteCode(invite_Code);
-
-        System.out.println(HOST);
         this.socket = new Socket(HOST, PORT);
         this.player = new Player(name);
 
-        System.out.println("a");
         this.handler = new ClientPacketHandler(socket, player);
 
-        System.out.println("b");
 
         //this.handler.start();
         new Thread(handler).start();
 
-        System.out.println("c");
     }
 
     public WaitRoomController getWaitRoomController(){
@@ -76,20 +54,7 @@ public class Client {
         return player;
     }
 
-    // todo
-    // public void setUpdateListener(UpdateListener updateListener){
-    //     this.updateListener = updateListener;
-    //     if(this.handler != null){
-    //         this.handler.setUpdateListener(updateListener);
-    //     }
-    // }
-
-    //  public void setSwitchListener(SwitchListener switchListener){
-    //     this.switchListener = switchListener;
-    //     if(this.handler != null){
-    //         this.handler.setSwitchListener(switchListener);
-    //     }
-    // }
+    
 
     public static void main(String[] args){
         // combine with GUI
@@ -105,7 +70,7 @@ public class Client {
             System.out.println("---------------\nclient connect error");
             e.printStackTrace();
         }
-        
+        scanner.close();
     }
 
 }

@@ -20,23 +20,16 @@ public class ClientPacketHandler implements Runnable{
     //individual info
     private Player player;
 
-    //todo:
-    //listener
-    // private UpdateListener updateListener;
-    // private SwitchListener switchListener;
-
     //controller
     private MessageController msgController;
     private WaitRoomController waitRoomController;
+    private GameStateController gameStateController;
 
     ClientPacketHandler(Socket socket, Player player) throws IOException{
         this.socket = socket;
         this.player = player;
-        System.out.println("a1");
         this.out = new ObjectOutputStream(this.socket.getOutputStream());
-        System.out.println("a2");
         this.in = new ObjectInputStream(this.socket.getInputStream());
-        System.out.println("a3");
     }
 
     @Override
@@ -70,8 +63,21 @@ public class ClientPacketHandler implements Runnable{
                             return;
                         case StartGame:
                             //todo
-                            //this.switchListener.update(); //switch the frame
+                            waitRoomController.switchToGame();
+                            this.gameStateController = new GameStateController(this.out, this.player.getPID());
                             System.out.println("Game Start\n-----------------");
+                            break;
+                        case DealerChoose:
+                            this.gameStateController.handle(revObject);
+                            this.gameStateController.dealerChoose();
+                            break;
+                        case PlayerChoose:
+                            this.gameStateController.handle(revObject);
+                            this.gameStateController.playerChoose();
+                            break;
+                        case DealerRate:
+                            this.gameStateController.handle(revObject);
+                            this.gameStateController.dealerRate();
                             break;
                         default:
                             System.out.println("Unknown packet type: " + revObject.getClass());
@@ -102,21 +108,6 @@ public class ClientPacketHandler implements Runnable{
     }
     
 
-    //setter
-    // public void setUpdateListener(UpdateListener updateListener){
-    //     this.updateListener = updateListener;
-    //     if(this.waitRoomController != null){
-    //         this.waitRoomController.setUpdateListener(updateListener);
-    //     }
-    // }
-
-    // public void setSwitchListener(SwitchListener switchListener){
-    //     this.switchListener = switchListener;
-    //     if(this.waitRoomController != null){
-    //         this.waitRoomController.setSwitchListener(switchListener);
-    //     }
-    // }
-
     private void init(Object obj) throws IOException{
         Init init = (Init) obj;
         this.player.setPID(init.getPID());
@@ -130,7 +121,7 @@ public class ClientPacketHandler implements Runnable{
         this.waitRoomController = new WaitRoomController(player.getPID(), out, this.player);
 
         // open chat
-        this.msgController = new MessageController(this.out, this.player, this.waitRoomController);
+        this.msgController = new MessageController(this.out, this.player);
 
         //new Thread(this.msgController).start();
     }

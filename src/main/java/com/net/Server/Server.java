@@ -8,8 +8,10 @@ import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import com.game.GameState;
 import com.net.inviteCode;
 import com.net.Room.*;
+import com.net.Server.Controller.GameStateController;
 import com.net.Server.interfaces.ServerManager;
 
 
@@ -24,6 +26,9 @@ public class Server implements ServerManager, Runnable{
     private static final WaitRoom waitRoom = new WaitRoom();
     private static final List<ServerPacketHandler> handlers = new CopyOnWriteArrayList<>();
     private String invite_Code;
+
+    //shared controller
+    private static GameStateController gameStateController = new GameStateController(clients, new GameState(waitRoom.getPlayers()));
 
     //variable
     private final int playerCnt = 3;
@@ -58,7 +63,7 @@ public class Server implements ServerManager, Runnable{
                 Socket clientSkt = serverSkt.accept();
                 System.out.println("clinet connected!!!");
 
-                ServerPacketHandler handler = new ServerPacketHandler(clientSkt, clients, waitRoom, cntId++, this);
+                ServerPacketHandler handler = new ServerPacketHandler(clientSkt, clients, waitRoom, cntId++, this, gameStateController);
                 handlers.add(handler);
                 new Thread(handler).start();
 
