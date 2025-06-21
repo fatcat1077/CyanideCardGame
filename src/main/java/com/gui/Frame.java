@@ -17,8 +17,9 @@ public class Frame extends JFrame {
         getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
         pack();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        //panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
         panel = new GamePanel(WIDTH, HEIGHT, null);
 
         add(panel);
