@@ -18,8 +18,8 @@ public class Frame extends JFrame {
         pack();
         setLocationRelativeTo(null);
 
-        panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
-        //panel = new GamePanel(WIDTH, HEIGHT, null);
+        // panel = new HomePanel(WIDTH, HEIGHT, e -> switchToRoom());
+        panel = new GamePanel(WIDTH, HEIGHT, null);
 
         add(panel);
     }
