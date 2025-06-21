@@ -27,6 +27,7 @@ public class Client {
     private ClientPacketHandler handler;
 
     public Client(String invite_Code, String name) throws IOException, ConnectException{
+        /*
         this.scanner = new Scanner(System.in);
         while(true){
             if(inviteCode.isValidInviteCode(invite_Code)){
@@ -37,6 +38,7 @@ public class Client {
                 invite_Code = this.scanner.nextLine();
             }
         }
+        */
 
         HOST = inviteCode.decodeInviteCode(invite_Code);
 
