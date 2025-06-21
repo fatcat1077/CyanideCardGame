@@ -3,6 +3,7 @@ package com.net.Client.Controller;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import com.net.Room.WaitRoom;
+import com.net.protocol.packets.StartGame;
 import com.net.protocol.packets.WaitRoomState;
 import com.players.Player;
 
@@ -16,11 +17,27 @@ public class WaitRoomController {
     private Player host;
     private int pid;
 
+    //listener
+    //private Interface updateListener;
+    //private Interface switchListener;
+
     public WaitRoomController(int pid, ObjectOutputStream out, Player player){
         this.pid = pid;
         this.out = out;
         this.player = player;
     }
+
+    //todo
+    //setter
+    // public void setUpdateListener(Interface updateListener){
+    //     this.updateListener = updateListener;
+    // }
+
+    //  public void setSwitchListener(Interface switchListener){
+    //     this.switchListener = switchListener;
+    // }
+
+
 
     public void handle(Object obj){
         WaitRoomState roomState = (WaitRoomState) obj;
@@ -36,15 +53,9 @@ public class WaitRoomController {
         sendPacket(newRoomStatePkt);
     }
 
-    public boolean startGame(){
-        boolean start = true;
-        for(Player player : this.room.getPlayers()){
-            if(!player.getReady()){
-                start = false;
-            } 
-            return start;
-        }
-        return start;
+    public void startGame(){
+        StartGame startGamePkt = new StartGame();
+        sendPacket(startGamePkt);
     }
 
     // maybe will remove this command
@@ -75,6 +86,7 @@ public class WaitRoomController {
         this.room = waitRoom;
         this.host = this.room.getHost();
 
+        //this.updateListener.update(); //update the waitroom
         System.out.println(String.format("Now RoomState (invite code = %s): ", waitRoom.getInviteCode()));
         System.out.println("Players: ");
         for(Player player : this.room.getPlayers()){

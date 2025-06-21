@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.net.protocol.packets.Disconnect;
 import com.net.protocol.packets.Message;
-
+import com.net.protocol.packets.StartGame;
 import com.players.Player;
 
 public class MessageController implements Runnable{
@@ -42,9 +42,7 @@ public class MessageController implements Runnable{
                 waitRoomController.ready();
                 continue;
             }else if (input.equals("start")){
-                if(waitRoomController.startGame()){
-                    System.out.println("Game Start !!!!! \n");
-                }
+                waitRoomController.startGame();
                 continue;
 
             }

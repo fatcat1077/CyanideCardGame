@@ -1,5 +1,5 @@
 package com.net.protocol.enums;
 
 public enum PacketType {
-    Init, Message, WaitRoomState, Disconnect, HostDisconnect
+    Init, Message, WaitRoomState, Disconnect, HostDisconnect, StartGame
 }

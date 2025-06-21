@@ -48,22 +48,34 @@ public class inviteCode {
 
     // 解碼：還原出原始 IP
     public static String decodeInviteCode(String code) {
-        int salt = indexOfChar(code.charAt(0));
+        int salt = indexOfCharSafe(code.charAt(0));
         int encoded = 0;
         for (int i = 1; i < 7; i++) {
             encoded <<= 6;
-            encoded |= indexOfChar(code.charAt(i));
+            encoded |= indexOfCharSafe(code.charAt(i));
         }
 
         int ipInt = encoded ^ saltKey(salt); // 反混淆
         return intToIp(ipInt);
     }
 
+    public static boolean isValidInviteCode(String code) {
+    if (code == null || code.length() != 7) {
+        return false;
+    }
+    for (char c : code.toCharArray()) {
+        if (indexOfCharSafe(c) == -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
     // 查找對應字元的索引值
-    private static int indexOfChar(char c) {
+    private static int indexOfCharSafe(char c) {
         for (int i = 0; i < INVITE_CHARS.length; i++) {
             if (INVITE_CHARS[i] == c) return i;
         }
-        throw new IllegalArgumentException("Invalid character in invite code: " + c);
+        return -1;
     }
 }
