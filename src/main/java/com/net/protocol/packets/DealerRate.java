@@ -9,6 +9,7 @@ public class DealerRate extends Packet{
     public DealerRate(GameState state){
         super(PacketType.DealerRate);
         this.state = state;
+        this.state.setState(PacketType.DealerRate);
     }
 
     public GameState getGameState(){

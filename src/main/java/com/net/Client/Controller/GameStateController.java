@@ -40,18 +40,25 @@ public class GameStateController {
             newState = ((DealerRate) obj).getGameState();
         }
         this.state = newState;
+        System.out.println("gsctrl handle");
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         this.updateListener.OnUpdate(this.state);
     }
 
     public void dealerChoose(){
-        if(this.state.getDealer().getPID() == this.pid){
-            // you are dealer
-            // do something
+        // you are dealer
+        // do something
 
-            //Last, send the new state
-            DealerChoose dealerChoosePkt = new DealerChoose(state);
-            sendPacket(dealerChoosePkt);
-        }
+        //Last, send the new state
+        DealerChoose dealerChoosePkt = new DealerChoose(state);
+        sendPacket(dealerChoosePkt);
+        
     }
 
     //player need to choose
@@ -86,6 +93,14 @@ public class GameStateController {
         }catch(IOException e){
             System.out.println(String.format("Sending %s packet error", packet.getClass().getSimpleName()));
         }  
+    }
+
+    public void setGameState(GameState state){
+        this.state = state;
+    }
+
+    public GameState getState(){
+        return this.state;
     }
 
 }

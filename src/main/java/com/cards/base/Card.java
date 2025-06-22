@@ -1,5 +1,6 @@
 package com.cards.base;
 
+import java.io.Serializable;
 import java.util.UUID;
 import com.game.GameState;
 import com.players.Player;
@@ -19,7 +20,7 @@ import com.cards.enums.Rarity;
  * }
  * </pre>
  */
-public abstract class Card {
+public abstract class Card implements Serializable{
 
     /* ---------- 常駐資料欄位 ---------- */
     private final UUID   instanceUuid = UUID.randomUUID(); // 這個要問問瑞倫圖要不要修

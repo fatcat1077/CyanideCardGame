@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.net.Room.WaitRoom;
+import com.net.protocol.packets.Packet;
 import com.players.Player;
 import com.net.Client.Client;
 import com.net.Client.Controller.WaitRoomController;
@@ -30,7 +31,7 @@ public class LobbyPanel extends Panel {
         this.client = client;
         this.wrCtrl = client.getWaitRoomController();
         wrCtrl.setUpdateListener(waitRoom -> update(waitRoom));
-        //wrCtrl.setSwitchListener(GAME-STATE -> _switch(GAME-STATE));
+        wrCtrl.setSwitchListener(p -> _switch(p));
 
         setBounds(0, 0, width, height);
         setLayout(null);
@@ -169,9 +170,9 @@ public class LobbyPanel extends Panel {
         revalidate();
         repaint();
     }
-    /*
-    private void _switch() {
+    
+    private void _switch(Packet p) {
         onSwitch.actionPerformed(null);
     }
-    */
+    
 }

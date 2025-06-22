@@ -7,8 +7,9 @@ public class PlayerChoose extends Packet{
     private GameState state;
 
     public PlayerChoose(GameState state){
-        super(PacketType.DealerRate);
+        super(PacketType.PlayerChoose);
         this.state = state;
+        this.state.setState(PacketType.PlayerChoose);
     }
 
     public GameState getGameState(){

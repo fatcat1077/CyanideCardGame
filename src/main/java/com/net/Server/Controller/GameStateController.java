@@ -24,6 +24,10 @@ public class GameStateController {
         this.controller = new GameController(state);
     }
 
+    public GameState getState(){
+        return this.state;
+    }
+
     public void handleDealerChoose(Object obj){
         GameState newState = ((DealerChoose)obj).getGameState();
         this.controller.commitDealerPlay(newState);

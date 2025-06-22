@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import com.net.inviteCode;
 import com.net.Client.Controller.*;
 import com.players.Player;
 
@@ -24,6 +25,8 @@ public class Client {
     private ClientPacketHandler handler;
 
     public Client(String invite_Code, String name) throws IOException, ConnectException{
+
+        this.HOST = inviteCode.decodeInviteCode(invite_Code);
 
         this.socket = new Socket(HOST, PORT);
         this.player = new Player(name);
@@ -46,6 +49,13 @@ public class Client {
     public MessageController getMessageController(){
         if(this.handler != null){
             return this.handler.getMessageController();
+        }
+        return null;
+    }
+
+    public GameStateController getGameStateController(){
+        if(this.handler != null){
+            return this.handler.getGameStateController();
         }
         return null;
     }

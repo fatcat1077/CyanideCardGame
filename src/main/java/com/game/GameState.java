@@ -1,5 +1,6 @@
 package com.game;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,14 +14,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.cards.base.Card;
 import com.cards.base.CardFactory;
+import com.net.protocol.enums.PacketType;
 import com.players.Player;
 
 /** 只保存「靜態 + 動態」遊戲資料，不控制流程。 */
-public class GameState {
+public class GameState implements Serializable{
 
     /* ─────── 全域常數（可改讀設定檔） ─────── */
-    public static final int    HAND_SIZE = 3;
-    public static final int    WIN_SCORE = 4;
+    public static final int    HAND_SIZE = 5;
+    public static final int    WIN_SCORE = 2;
     public static final String CARD_JSON = "assets/cards.json";
 
     /* ─────── 不變資料 ─────── */
@@ -37,13 +39,15 @@ public class GameState {
     //private final Map<Player, Card>    playerChosenCard  = new LinkedHashMap<>();
     private int                        dealerIndex       = -1;
     private Player  roundWinner = null;   // 
+    private PacketType state;
 
     /* ─────── 建構 ─────── */
     public GameState(List<Player> players) {
-        if (players == null || players.isEmpty())
-            throw new IllegalArgumentException("至少要有 1 名玩家才能開局！");
         this.players = players;
+    }
 
+    public void start(){
+        
         /* 1. 首任莊家 */
         dealerIndex = new Random().nextInt(players.size());
         players.get(dealerIndex).setDealer(true);
@@ -56,6 +60,22 @@ public class GameState {
         /* 3. 發起始牌 */
         for (Player p : players) {
             for (int i = 0; i < HAND_SIZE; i++) p.draw(deck.pop());
+        }
+    }
+
+    public void setTableCards(int index, Card card){
+        this.tableCards.set(index, card);
+    }
+
+    public void removeCard(int pid, int cid){
+        for(Player player : players){
+            if(player.getPID() == pid){
+                for(Card card : player.getHand()){
+                    if(card.getCardId() == cid){
+                        player.getHand().remove(card);
+                    }
+                }
+            }
         }
     }
 
@@ -72,6 +92,14 @@ public class GameState {
     public Card getWinningCard()        { return winningCard; }
 
     public void setWinningCard(Card c)  { this.winningCard = c; }//winning card的setter
+
+    public PacketType getState(){
+        return this.state;
+    }
+
+    public void setState(PacketType state){
+        this.state = state;
+    }
 
     /* ★ 新增回合勝者欄位 */
     public Player getRoundWinner()            { return roundWinner; }

@@ -126,6 +126,7 @@ public class GameController {
     }
 
 
+
     /* CLI 顯示（測試用） */
     public Player pickRandomPlayer(List<Player> cs){ return cs.get(rnd.nextInt(cs.size())); }
     public void banner(String m){ System.out.println("\n========== "+m+" =========="); }

@@ -30,6 +30,7 @@ public class ClientPacketHandler implements Runnable{
         this.player = player;
         this.out = new ObjectOutputStream(this.socket.getOutputStream());
         this.in = new ObjectInputStream(this.socket.getInputStream());
+        this.gameStateController = new GameStateController(this.out, this.player.getPID());
     }
 
     @Override
@@ -39,7 +40,6 @@ public class ClientPacketHandler implements Runnable{
             // Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             //     disconnectGracefully(); // 程式結束時自動發送 Disconnect 封包
             // }));
-
             while (true) {
                 Object revObject = in.readObject();
                 
@@ -64,18 +64,20 @@ public class ClientPacketHandler implements Runnable{
                         case StartGame:
                             //todo
                             waitRoomController.switchToGame();
-                            this.gameStateController = new GameStateController(this.out, this.player.getPID());
                             System.out.println("Game Start\n-----------------");
                             break;
                         case DealerChoose:
+                            System.out.println("Now revieve packet : DealerChoose");
                             this.gameStateController.handle(revObject);
-                            this.gameStateController.dealerChoose();
+                            //this.gameStateController.dealerChoose();
                             break;
                         case PlayerChoose:
+                            System.out.println("Now revieve packet : PlayerChoose");
                             this.gameStateController.handle(revObject);
                             this.gameStateController.playerChoose();
                             break;
                         case DealerRate:
+                            System.out.println("Now revieve packet : DealerRate");
                             this.gameStateController.handle(revObject);
                             this.gameStateController.dealerRate();
                             break;
@@ -86,7 +88,8 @@ public class ClientPacketHandler implements Runnable{
                 }
             }
         } catch (Exception e) {
-            System.out.println(player.getName() + "Disconnected from server.");
+            e.printStackTrace();
+            System.out.println(player.getName() + " Disconnected from server.");
         } finally {
             disconnect();
         }
@@ -103,6 +106,13 @@ public class ClientPacketHandler implements Runnable{
     public MessageController getMessageController(){
         if(this.msgController != null){
             return this.msgController;
+        }
+        return null;
+    }
+
+    public GameStateController getGameStateController(){
+        if(this.gameStateController != null) {
+            return this.gameStateController;
         }
         return null;
     }

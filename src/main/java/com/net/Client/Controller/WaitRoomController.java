@@ -38,10 +38,6 @@ public class WaitRoomController {
         this.switchListener = switchListener;
     }
 
-    public void switchToGame(){
-        this.switchListener.OnSwitch(null);
-    }
-
     public void handle(Object obj){
         WaitRoomState roomState = (WaitRoomState) obj;
 
@@ -59,6 +55,10 @@ public class WaitRoomController {
     public void startGame(){
         StartGame startGamePkt = new StartGame();
         sendPacket(startGamePkt);
+    }
+
+    public void switchToGame(){
+        this.switchListener.OnSwitch(null);
     }
 
     // maybe will remove this command

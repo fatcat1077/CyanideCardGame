@@ -94,4 +94,8 @@ public class CardGUI extends JLabel {
     public CardState getCardState() {
         return cardState;
     }
+
+    public Card getCard() {
+        return card;
+    }
 }

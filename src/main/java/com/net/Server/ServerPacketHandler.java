@@ -114,12 +114,16 @@ public class ServerPacketHandler implements Runnable{
         StartGame startGamePkt = new StartGame();
         broacastPkt(startGamePkt);
 
-        gameState = new GameState(this.waitRoom.getPlayers());
-        this.gameStateController = new GameStateController(clients, gameState);
-        
-        DealerChoose dealerChoosePkt = new DealerChoose(gameState);
-        broacastPkt(dealerChoosePkt);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        this.gameStateController.getState().start();
+        
+        DealerChoose dealerChoosePkt = new DealerChoose(this.gameStateController.getState());
+        broacastPkt(dealerChoosePkt);
     }
 
     private void sendInitPacket(){

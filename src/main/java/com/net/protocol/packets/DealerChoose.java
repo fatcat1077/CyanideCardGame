@@ -9,6 +9,7 @@ public class DealerChoose extends Packet{
     public DealerChoose(GameState state){
         super(PacketType.DealerChoose);
         this.state = state;
+        this.state.setState(PacketType.DealerChoose);
     }
 
     public GameState getGameState(){
